@@ -13,6 +13,12 @@ export default {
   name: "Home",
   components: {
     HelloWorld
+  },
+
+  mounted() {
+    window.Echo.channel("channel").listen("hello", e => {
+      console.log(e);
+    });
   }
 };
 </script>
