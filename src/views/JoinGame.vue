@@ -1,13 +1,11 @@
 <template>
-    <div>
-        
-    </div>
+  <div>
+    Join Game
+  </div>
 </template>
 <script>
 export default {
-    name: "JoinGame",
-}
+  name: "JoinGame"
+};
 </script>
-<style lang="scss" scoped>
-    
-</style>
+<style lang="scss" scoped></style>

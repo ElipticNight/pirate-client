@@ -23,7 +23,7 @@ export default {
       this.$router.push("/instructions");
     }
   }
-}
+};
 </script>
 <style lang="scss">
 .window {
@@ -32,8 +32,8 @@ export default {
   justify-content: center;
   height: 100vh;
   .container {
-    width: 500px;
-    height: 750px;
+    height: 75vh;
+    width: 25vw;
     border-radius: 50px;
     border: solid 2px blue;
     padding: 20px;
