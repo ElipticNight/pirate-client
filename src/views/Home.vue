@@ -1,24 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="helloserver()">Hello Server!</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  },
 
   mounted() {
     window.Echo.channel("channel").listen("hello", e => {
       console.log(e);
     });
+    window.Echo.channel("channel").listen("response", e => {
+      console.log(e);
+    });
+  },
+  methods: {
+    helloserver() {
+      axios.get("http://127.0.0.1:8000/clientmessage")
+    }
   }
 };
 </script>
