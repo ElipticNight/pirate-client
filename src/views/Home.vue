@@ -2,15 +2,27 @@
   <div class="window">
     <div class="container">
       <h1>Pirate Game</h1>
-      <button class="home-button">Create Game</button>
-      <button class="home-button">Join Game</button>
-      <button class="home-button">Instructions</button>
+      <button class="home-button" @click="creategame()">Create Game</button>
+      <button class="home-button" @click="joingame()">Join Game</button>
+      <button class="home-button" @click="instructions()">Instructions</button>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: "Home",
+
+  methods: {
+    creategame() {
+      this.$router.push("/create");
+    },
+    joingame() {
+      this.$router.push("/join");
+    },
+    instructions() {
+      this.$router.push("/instructions");
+    }
+  }
 }
 </script>
 <style lang="scss">
@@ -19,7 +31,6 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgb(27, 73, 88);
   .container {
     width: 500px;
     height: 750px;
