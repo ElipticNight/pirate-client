@@ -1,60 +1,45 @@
 <template>
-  <div class="home">
-    <button class="message-server" @click="helloserver()">Hello Server!</button>
-    <div v-for="(response, index) in responses" :key="index">
-      <div class="server-response">{{response}}</div>
+  <div class="window">
+    <div class="container">
+      <h1>Pirate Game</h1>
+      <button class="home-button">Create Game</button>
+      <button class="home-button">Join Game</button>
+      <button class="home-button">Instructions</button>
     </div>
   </div>
 </template>
-
 <script>
-import axios from "axios";
-
 export default {
-  name: "Home",
-  data: function () {
-    return {
-      responses: []
-    }
-  },
   
-
-  mounted() {
-    window.Echo.channel("channel").listen("hello", e => {
-      this.responses.push(e);
-
-    });
-    window.Echo.channel("channel").listen("response", e => {
-      this.responses.push(e);
-    });
-  },
-  methods: {
-    helloserver() {
-      axios.get("http://127.0.0.1:8000/clientmessage")
-    }
-  }
-};
+}
 </script>
-
-<style lang="scss" scoped>
-.home{
-  width: 100%;
+<style lang="scss">
+.window {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  .message-server{
-    width: 300px;
-    height: 25px;
-    margin: 30px;
-  }
-
-  .server-response{
-    margin: 5px;
-    width: 300px;
-    height: 50px;
-    border: solid 1px black;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(27, 73, 88);
+  .container {
+    width: 500px;
+    height: 750px;
+    border-radius: 50px;
+    border: solid 2px blue;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
     text-align: center;
+    .home-button {
+      height: 75px;
+      background-color: darkblue;
+      color: white;
+      border: none;
+      border-radius: 20px;
+    }
+    h1 {
+      color: darkblue;
+    }
   }
 }
-
 </style>
