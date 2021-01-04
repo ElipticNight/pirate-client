@@ -19,13 +19,32 @@
         <input type="checkbox" />
         four
       </label>
-      <button class="create-button">Create Game</button>
+      <button class="create-button" @click="creategame()">Create Game</button>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
-  name: "JoinGame"
+  name: "CreateGame",
+
+  methods: {
+    creategame() {
+      axios.get("http://127.0.0.1:8000/createroom").then(
+        response => {
+          this.channel = response.data;
+          this.play();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    },
+    play() {
+      this.$router.push("/play/" + this.channel);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -50,7 +69,8 @@ export default {
       border: none;
       border-radius: 20px;
     }
-    h1, h3 {
+    h1,
+    h3 {
       color: darkblue;
     }
   }

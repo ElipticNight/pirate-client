@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import CreateGame from "../views/CreateGame.vue";
 import JoinGame from "../views/JoinGame.vue";
 import Instructions from "../views/Instructions.vue";
+import Play from "../views/Play.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/instructions",
     name: "Instructions",
     component: Instructions
+  },
+  {
+    path: "/play/:channel",
+    name: "Play",
+    component: Play
   }
 ];
 

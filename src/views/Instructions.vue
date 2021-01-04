@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "JoinGame"
+  name: "Instructions"
 };
 </script>
 <style lang="scss" scoped></style>
