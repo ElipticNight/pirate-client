@@ -14,18 +14,6 @@ import RouteButton from '../components/RouteButton.vue';
 export default {
   components: { RouteButton },
   name: "Home",
-
-  methods: {
-    creategame() {
-      this.$router.push("/create");
-    },
-    joingame() {
-      this.$router.push("/join");
-    },
-    instructions() {
-      this.$router.push("/instructions"); 
-    }
-  }
 };
 </script>
 <style lang="scss">
