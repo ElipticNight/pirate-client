@@ -2,14 +2,42 @@
   <div class="base-window">
     <div class="base-container">
       <h1>Join Game</h1>
-      <input type="text" name="roomid" placeholder="Room ID">
-      <input type="button" value="Join">
+      <input class="game-id-button" type="text" v-model="roomID" placeholder="Room ID">
+      <RouteButton button-text="Instructions" :route-target="target"></RouteButton>
     </div>
   </div>
 </template>
 <script>
+import RouteButton from '../components/RouteButton.vue';
+
 export default {
-  name: "JoinGame"
+  components: { RouteButton },
+  name: "JoinGame",
+
+  data: function() {
+    return {
+      roomID: ''
+    }
+  },
+
+  computed: {
+    target: function() {
+      return "play/" + this.roomID
+    }
+  }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.game-id-button {
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid blue;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  background-color: lightblue;
+  &:hover {
+    box-shadow: 0px 0px 1px 1px blue;
+  }
+}
+</style>
