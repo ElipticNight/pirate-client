@@ -2,10 +2,12 @@
   <div class="base-window">
     <div class="base-container">
       <h1>Instructions</h1>
-      <h3>One</h3>
-      <h3>Two</h3>
-      <h3>Three</h3>
-      <h3>Four</h3>
+      <div class="instructions">
+      <h3>This is instructions on how to play the porate game</h3>
+      <h3>Each of these instructions will be a vue component</h3>
+      <h3>Lorem</h3>
+      <h3>Ipsum</h3>
+      </div>
     </div>
   </div>
 </template>
@@ -14,4 +16,11 @@ export default {
   name: "Instructions"
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.base-container {
+  width: 50vw;
+  .instructions {
+    text-align: left;
+  }
+}
+</style>
