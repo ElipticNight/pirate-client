@@ -1,5 +1,5 @@
 <template>
-  <div class="window">
+  <div class="base-window">
     <h1>{{ $route.params.channel }}</h1>
   </div>
 </template>
@@ -17,11 +17,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.window {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="window">
-    <div class="container">
+  <div class="base-window">
+    <div class="base-container">
       <h1>Create Game</h1>
       <h3>settings:</h3>
       <label>
@@ -48,31 +48,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.window {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  .container {
-    height: 75vh;
-    width: 25vw;
-    border-radius: 50px;
-    border: solid 2px blue;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    .create-button {
-      height: 75px;
-      background-color: darkblue;
-      color: white;
-      border: none;
-      border-radius: 20px;
-    }
-    h1,
-    h3 {
-      color: darkblue;
-    }
-  }
+.create-button {
+  height: 75px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+h1,
+h3 {
+  color: darkblue;
 }
 </style>
