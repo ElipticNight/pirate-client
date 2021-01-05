@@ -32,7 +32,13 @@ export default {
     justify-content: space-around;
     flex-direction: column;
     text-align: center;
-    h1 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       color: darkblue;
     }
   }

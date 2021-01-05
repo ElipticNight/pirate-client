@@ -55,8 +55,4 @@ export default {
   border: none;
   border-radius: 20px;
 }
-h1,
-h3 {
-  color: darkblue;
-}
 </style>
