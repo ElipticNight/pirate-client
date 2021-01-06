@@ -1,12 +1,16 @@
 <template>
   <div class="base-window">
     <div class="base-container">
-      <h1>Pirate Game</h1>
-      <RouteButton button-text="Create Game" route-target="create">
-      </RouteButton>
-      <RouteButton button-text="Join Game" route-target="join"> </RouteButton>
-      <RouteButton button-text="Instructions" route-target="instructions">
-      </RouteButton>
+      <div class="base-title">
+        <h1>Pirate Game</h1>
+      </div>
+      <div class="base-content">
+        <RouteButton button-text="Create Game" route-target="create">
+        </RouteButton>
+        <RouteButton button-text="Join Game" route-target="join"> </RouteButton>
+        <RouteButton button-text="Instructions" route-target="instructions">
+        </RouteButton>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +38,22 @@ export default {
     justify-content: space-around;
     flex-direction: column;
     text-align: center;
+    .base-title {
+      flex: 1;
+    }
+    .base-content {
+      display: flex;
+      flex: 4;
+      justify-content: space-around;
+      flex-direction: column;
+      text-align: center;
+    }
+    .base-submit {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      text-align: center;
+    }
     h1,
     h2,
     h3,

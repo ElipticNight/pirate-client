@@ -1,15 +1,21 @@
 <template>
   <div class="base-window">
     <div class="base-container">
-      <h1>Join Game</h1>
-      <input
-        class="game-id-button"
-        type="text"
-        v-model="roomID"
-        placeholder="Room ID"
-      />
-      <RouteButton button-text="Instructions" :route-target="target">
-      </RouteButton>
+      <div class="base-title">
+        <h1>Join Game</h1>
+      </div>
+      <div class="base-content">
+        <input
+          class="game-id-button"
+          type="text"
+          v-model="roomID"
+          placeholder="Room ID"
+        />
+      </div>
+      <div class="base-submit">
+        <RouteButton button-text="Instructions" :route-target="target">
+        </RouteButton>
+      </div>
     </div>
   </div>
 </template>
