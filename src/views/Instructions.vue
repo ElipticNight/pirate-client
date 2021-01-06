@@ -1,11 +1,17 @@
 <template>
-  <div class="window">
-    <div class="container">
-      <h1>Instructions</h1>
-      <h3>One</h3>
-      <h3>Two</h3>
-      <h3>Three</h3>
-      <h3>Four</h3>
+  <div class="base-window">
+    <div class="base-container">
+      <div class="base-title">
+        <h1>Instructions</h1>
+      </div>
+      <div class="base-content">
+        <div class="instructions">
+          <h3>This is instructions on how to play the pirate game</h3>
+          <h3>Each of these instructions will be a vue component</h3>
+          <h3>Lorem</h3>
+          <h3>Ipsum</h3>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -15,20 +21,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.window {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  .container {
-    height: 75vh;
-    width: 50vw;
-    border-radius: 50px;
-    border: solid 2px blue;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+.base-container {
+  width: 50vw;
+  .instructions {
+    text-align: left;
   }
 }
 </style>

@@ -1,37 +1,34 @@
 <template>
-  <div class="window">
-    <div class="container">
-      <h1>Pirate Game</h1>
-      <button class="home-button" @click="creategame()">Create Game</button>
-      <button class="home-button" @click="joingame()">Join Game</button>
-      <button class="home-button" @click="instructions()">Instructions</button>
+  <div class="base-window">
+    <div class="base-container">
+      <div class="base-title">
+        <h1>Pirate Game</h1>
+      </div>
+      <div class="base-content">
+        <RouteButton button-text="Create Game" route-target="create">
+        </RouteButton>
+        <RouteButton button-text="Join Game" route-target="join"> </RouteButton>
+        <RouteButton button-text="Instructions" route-target="instructions">
+        </RouteButton>
+      </div>
     </div>
   </div>
 </template>
 <script>
-export default {
-  name: "Home",
+import RouteButton from "../components/RouteButton.vue";
 
-  methods: {
-    creategame() {
-      this.$router.push("/create");
-    },
-    joingame() {
-      this.$router.push("/join");
-    },
-    instructions() {
-      this.$router.push("/instructions");
-    }
-  }
+export default {
+  components: { RouteButton },
+  name: "Home"
 };
 </script>
-<style lang="scss" scoped>
-.window {
+<style lang="scss">
+.base-window {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  .container {
+  .base-container {
     height: 75vh;
     width: 25vw;
     border-radius: 50px;
@@ -41,14 +38,29 @@ export default {
     justify-content: space-around;
     flex-direction: column;
     text-align: center;
-    .home-button {
-      height: 75px;
-      background-color: darkblue;
-      color: white;
-      border: none;
-      border-radius: 20px;
+    .base-title {
+      flex: 1;
     }
-    h1 {
+    .base-content {
+      display: flex;
+      flex: 4;
+      justify-content: space-around;
+      flex-direction: column;
+      text-align: center;
+    }
+    .base-submit {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      text-align: center;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       color: darkblue;
     }
   }
