@@ -3,30 +3,20 @@
     <div class="base-container">
       <h1>Create Game</h1>
       <h3>settings:</h3>
-      <label>
-        <input type="checkbox" />
-        one
-      </label>
-      <label>
-        <input type="checkbox" />
-        two
-      </label>
-      <label>
-        <input type="checkbox" />
-        three
-      </label>
-      <label>
-        <input type="checkbox" />
-        four
-      </label>
+      <checkbox></checkbox>
+      <checkbox></checkbox>
+      <checkbox></checkbox>
+      <checkbox></checkbox>
       <button class="create-button" @click="creategame()">Create Game</button>
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
+import Checkbox from "../components/Checkbox.vue";
 
 export default {
+  components: { Checkbox },
   name: "CreateGame",
 
   methods: {
