@@ -2,10 +2,16 @@
   <div>
     <label class="label-container">
       <input type="checkbox" />
-      One
+      {{ label }}
     </label>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["label"]
+};
+</script>
 
 <style lang="scss" scoped>
 .label-container {

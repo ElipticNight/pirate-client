@@ -3,10 +3,10 @@
     <div class="base-container">
       <h1>Create Game</h1>
       <h3>settings:</h3>
-      <checkbox></checkbox>
-      <checkbox></checkbox>
-      <checkbox></checkbox>
-      <checkbox></checkbox>
+      <checkbox label="One"></checkbox>
+      <checkbox label="Two"></checkbox>
+      <checkbox label="Three"></checkbox>
+      <checkbox label="Four"></checkbox>
       <button class="create-button" @click="creategame()">Create Game</button>
     </div>
   </div>
