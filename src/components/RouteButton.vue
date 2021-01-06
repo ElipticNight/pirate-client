@@ -4,16 +4,13 @@
 
 <script>
 export default {
-    props: [
-        'buttonText',
-        'routeTarget'
-        ],
-    methods: {
-        navigate() {
-            this.$router.push("/" + this.routeTarget);
-        }
+  props: ["buttonText", "routeTarget"],
+  methods: {
+    navigate() {
+      this.$router.push("/" + this.routeTarget);
     }
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
