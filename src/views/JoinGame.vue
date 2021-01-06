@@ -2,13 +2,19 @@
   <div class="base-window">
     <div class="base-container">
       <h1>Join Game</h1>
-      <input class="game-id-button" type="text" v-model="roomID" placeholder="Room ID">
-      <RouteButton button-text="Instructions" :route-target="target"></RouteButton>
+      <input
+        class="game-id-button"
+        type="text"
+        v-model="roomID"
+        placeholder="Room ID"
+      />
+      <RouteButton button-text="Instructions" :route-target="target">
+      </RouteButton>
     </div>
   </div>
 </template>
 <script>
-import RouteButton from '../components/RouteButton.vue';
+import RouteButton from "../components/RouteButton.vue";
 
 export default {
   components: { RouteButton },
@@ -16,17 +22,18 @@ export default {
 
   data: function() {
     return {
-      roomID: ''
-    }
+      roomID: ""
+    };
   },
 
   computed: {
     target: function() {
-      return "play/" + this.roomID
+      return "play/" + this.roomID;
     }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .game-id-button {
   margin: 8px 0;

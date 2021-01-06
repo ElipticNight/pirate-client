@@ -2,18 +2,20 @@
   <div class="base-window">
     <div class="base-container">
       <h1>Pirate Game</h1>
-      <RouteButton button-text="Create Game" route-target="create"></RouteButton>
-      <RouteButton button-text="Join Game" route-target="join"></RouteButton>
-      <RouteButton button-text="Instructions" route-target="instructions"></RouteButton>
+      <RouteButton button-text="Create Game" route-target="create">
+      </RouteButton>
+      <RouteButton button-text="Join Game" route-target="join"> </RouteButton>
+      <RouteButton button-text="Instructions" route-target="instructions">
+      </RouteButton>
     </div>
   </div>
 </template>
 <script>
-import RouteButton from '../components/RouteButton.vue';
+import RouteButton from "../components/RouteButton.vue";
 
 export default {
   components: { RouteButton },
-  name: "Home",
+  name: "Home"
 };
 </script>
 <style lang="scss">
