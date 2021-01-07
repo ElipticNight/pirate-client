@@ -13,7 +13,7 @@
         />
       </div>
       <div class="base-submit">
-        <RouteButton button-text="Instructions" :route-target="target">
+        <RouteButton button-text="Join Game" :route-target="target">
         </RouteButton>
       </div>
     </div>
