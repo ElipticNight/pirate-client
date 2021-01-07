@@ -11,11 +11,7 @@ export default {
   name: "Play",
   mounted() {
     this.channel = this.$route.params.channel;
-    window.Echo.channel(this.channel).listen("RoomJoined", response => {
-      console.log(response);
-    });
-
-    window.Echo.channel(this.channel).listen("Message", response => {
+    window.Echo.channel(this.channel).listen(".event", response => {
       console.log(response);
     });
 
