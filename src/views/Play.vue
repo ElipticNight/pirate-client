@@ -9,9 +9,9 @@ import axios from "axios";
 export default {
   name: "Play",
   mounted() {
-    this.channel = this.$route.params.channel
-    window.Echo.channel(this.channel).listen("join", response => {
-      console.log(response)
+    this.channel = this.$route.params.channel;
+    window.Echo.channel(this.channel).listen("RoomJoined", response => {
+      console.log(response);
     });
 
     axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
@@ -21,7 +21,7 @@ export default {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 };
 </script>
