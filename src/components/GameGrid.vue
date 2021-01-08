@@ -2,7 +2,7 @@
 	<div>
 		<button @click="triggerTest()">click me</button>
     <div class="grid-container" :style="cssVars">
-			<GameGridSquare v-for="i in squareNos" :key="i" :ref="i" :trigger="trigger"></GameGridSquare>
+			<GameGridSquare v-for="i in squareNos" :key="i" ref="test"></GameGridSquare>
     </div>
   </div>
 </template>
@@ -15,7 +15,6 @@ export default {
 	data: function() {
 		return {
 			gridSize: 7,
-			trigger: 0,
 		};
 	},
 	computed: {
@@ -30,7 +29,7 @@ export default {
 	},
 	methods: {
 		triggerTest: function() {
-			this.trigger++;
+			this.$refs.test[Math.floor(Math.random() * 48)].activated();
 		}
 	}
 };

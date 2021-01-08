@@ -1,24 +1,17 @@
 <template>
-	<div @click="clicked()" class="square" v-bind:class="{ clicked: isClicked }"></div>
+	<div @click="activated()" class="square" v-bind:class="{ activated: isActivated }"></div>
 </template>
 
 <script>
 export default {
-	props: ['trigger'],
-
 	data: function() {
 		return {
-			isClicked: false
+			isActivated: false
 		};
 	},
 	methods: {
-		clicked: function () {
-			this.isClicked = !this.isClicked
-		}
-	},
-	watch: {
-		trigger: function() {
-			console.log('test');
+		activated: function () {
+			this.isActivated = !this.isActivated
 		}
 	}
 }
@@ -29,7 +22,7 @@ export default {
 	height: 100%;
 	border: solid 1px black;
 }
-.clicked {
+.activated {
 	background-color: lightcoral;
 }
 </style>
