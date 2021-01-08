@@ -1,13 +1,17 @@
 <template>
 	<div>
     <div class="grid-container" :style="cssVars">
-			<div v-for="i in squareNos" :key="i" class="square" ></div>
+			<GameGridSquare v-for="i in squareNos" :key="i" :ref="i"></GameGridSquare>
     </div>
   </div>
 </template>
 
 <script>
+import GameGridSquare from "../components/GameGridSquare.vue";
+
 export default {
+	components: { GameGridSquare },
+	
     data: function() {
         return {
             gridSize: 7
@@ -33,12 +37,5 @@ export default {
     display: grid;
     grid-template-rows: repeat(var(--grid-dimensions), 1fr);
 		grid-template-columns: repeat(var(--grid-dimensions), 1fr);
-    .square {
-			height: 100%;
-			border: solid 1px black;
-			&:hover {
-					background-color: lightblue;
-			}
-    }
 }
 </style>
