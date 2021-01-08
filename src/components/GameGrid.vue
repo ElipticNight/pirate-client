@@ -1,11 +1,7 @@
 <template>
 	<div>
-    <div class="grid-container">
-				<div v-for="row in gridValues" :key="row" class="grid-row">
-					<div v-for="column in row" :key="column">
-						<div class="square" ref="{{ column }}">{{ column }}</div>
-					</div>
-				</div>
+    <div class="grid-container" :style="cssVars">
+			<div v-for="i in squareNos" :key="i" class="square" ></div>
     </div>
   </div>
 </template>
@@ -14,32 +10,35 @@
 export default {
     data: function() {
         return {
-            gridValues: {
-							a: [1, 2, 3],
-							b: [4, 5, 6],
-							c: [7, 8, 9]
-						}
+            gridSize: 7
         };
-    }
+		},
+		computed: {
+			squareNos() {
+				return this.gridSize ** 2
+			},
+			cssVars() {
+				return {
+					'--grid-dimensions': this.gridSize
+				};
+			}
+		}
 };
 </script>
 
 <style lang="scss" scoped>
 .grid-container {
-    width: 50vw;
-    height: 50vh;
+    width: 75vh;
+    height: 75vh;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-		.grid-row {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);			
-		}
+    grid-template-rows: repeat(var(--grid-dimensions), 1fr);
+		grid-template-columns: repeat(var(--grid-dimensions), 1fr);
     .square {
 			height: 100%;
-        border: solid 1px black;
-        &:hover {
-            background-color: lightblue;
-        }
+			border: solid 1px black;
+			&:hover {
+					background-color: lightblue;
+			}
     }
 }
 </style>
