@@ -4,6 +4,8 @@
 
 <script>
 export default {
+	props: ['trigger'],
+
 	data: function() {
 		return {
 			isClicked: false
@@ -14,6 +16,11 @@ export default {
 			this.isClicked = !this.isClicked
 		}
 	},
+	watch: {
+		trigger: function() {
+			console.log('test');
+		}
+	}
 }
 </script>
 
@@ -21,9 +28,6 @@ export default {
 .square {
 	height: 100%;
 	border: solid 1px black;
-	&:hover {
-			background-color: lightblue;
-	}
 }
 .clicked {
 	background-color: lightcoral;

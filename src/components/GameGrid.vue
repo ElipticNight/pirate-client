@@ -1,7 +1,8 @@
 <template>
 	<div>
+		<button @click="triggerTest()">click me</button>
     <div class="grid-container" :style="cssVars">
-			<GameGridSquare v-for="i in squareNos" :key="i" :ref="i"></GameGridSquare>
+			<GameGridSquare v-for="i in squareNos" :key="i" :ref="i" :trigger="trigger"></GameGridSquare>
     </div>
   </div>
 </template>
@@ -11,22 +12,27 @@ import GameGridSquare from "../components/GameGridSquare.vue";
 
 export default {
 	components: { GameGridSquare },
-	
-    data: function() {
-        return {
-            gridSize: 7
-        };
+	data: function() {
+		return {
+			gridSize: 7,
+			trigger: 0,
+		};
+	},
+	computed: {
+		squareNos() {
+			return this.gridSize ** 2
 		},
-		computed: {
-			squareNos() {
-				return this.gridSize ** 2
-			},
-			cssVars() {
-				return {
-					'--grid-dimensions': this.gridSize
-				};
-			}
+		cssVars() {
+			return {
+				'--grid-dimensions': this.gridSize
+			};
 		}
+	},
+	methods: {
+		triggerTest: function() {
+			this.trigger++;
+		}
+	}
 };
 </script>
 
