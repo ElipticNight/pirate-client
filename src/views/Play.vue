@@ -1,13 +1,14 @@
 <template>
   <div class="base-window">
-    <h1>{{ $route.params.channel }}</h1>
-    <input @click="sendMessage()" type="button" value="hello">
+    <GameGrid></GameGrid>
   </div>
 </template>
 <script>
 import axios from "axios";
+import GameGrid from "../components/GameGrid.vue";
 
 export default {
+  components: { GameGrid },
   name: "Play",
   mounted() {
     this.channel = this.$route.params.channel;
