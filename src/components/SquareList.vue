@@ -10,13 +10,10 @@
 </template>
 
 <script>
-//to start have an element i can click, and then i can click on squares to apply
-//dont bother with draggable yet
-
 export default {
 	data: function() {
 		return {
-			squareTypeNos: 10,
+			squareTypeNos: 12,
 		};
 	},
 	computed: {
@@ -27,11 +24,6 @@ export default {
 			return {
 				'--grid-rows': this.columnNos
 			};
-		}
-	},
-	methods: {
-		triggerTest: function() {
-			this.$refs.test[Math.floor(Math.random() * 48)].activated();
 		}
 	}
 };
@@ -46,9 +38,9 @@ export default {
   .test {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-    width: 100px;
-    height: 50px;
+    column-gap: 2vh;
+    width: 16vh;
+    height: 7vh;
     .test-child {
       width: 100%;
       height: 100%;
