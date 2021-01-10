@@ -8,7 +8,17 @@ export const store = new Vuex.Store({
         setup: {
             active: null,
             activeValue: null,
-            availablePoints: {}
+            availablePoints: {},
+            availableActions: {
+                4: "A",
+                5: "B",
+                6: "C",
+                7: "D",
+                8: "E",
+                9: "F",
+                10: "G",
+                11: "H"
+            }
         },
         play: {
             gameGridValues: {}
