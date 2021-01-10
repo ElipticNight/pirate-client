@@ -2,6 +2,7 @@
   <div class="base-window">
     <div v-if="gameState === 'setup'" class="setup">
       <div class="left-sidebar">
+        <ActionSquaresList></ActionSquaresList>
       </div>
       <div class="centre">
         <GameGrid></GameGrid>
@@ -15,7 +16,7 @@
         }]"></PointSquaresList>
       </div>
       <div class="bottom">
-        <ActionSquaresList></ActionSquaresList>
+        <button class="ready-button">Ready!</button>
       </div>
     </div>
     <div v-if="gameState === 'play'" class="play">
@@ -73,8 +74,25 @@ export default {
 .setup {
   display: grid;
   grid-template-columns: 2fr 10fr 2fr;
-  grid-template-rows: 9fr 1fr;
+  grid-template-rows: 8fr 2fr;
   column-gap: 10vh;
   justify-items: center;
+  .bottom{
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .ready-button {
+      height: 7vh;
+      width: 50vh;
+      background-color: darkblue;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      &:hover{
+        box-shadow: 0px 0px 1px 1px darkblue;
+      }
+    }
+  }
 }
 </style>

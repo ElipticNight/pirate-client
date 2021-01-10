@@ -17,8 +17,6 @@ export default {
 			return this.$store.state.setup.active === this.reference;
     },
     available() {
-      //this wont be reactive due to it being direct array manipulation
-      //find the workaround
       return this.$store.state.setup.availablePoints[this.points];
     }
   },
