@@ -16,17 +16,19 @@ export default {
 	},
 	methods: {
 		activated: function () {
-			if(this.squareValue === this.$store.state.setup.activeValue) {
-				this.$store.state.play.gameGridValues[this.reference] = null;
+			this.activeValue = this.$store.state.setup.activeValue;
+			this.availablePoints = this.$store.state.setup.availablePoints[this.activeValue];
+			if(this.squareValue === this.activeValue) {
+				this.$store.commit('storeGameGridValue', this.reference, null);
 				if (this.squareValue) {
-					this.$store.state.setup.availablePoints[this.squareValue] ++;
+					this.$store.commit('incrementAvailablePoints', this.squareValue);
 				}
 				this.squareValue = null;
-			} else if (this.$store.state.setup.availablePoints[this.$store.state.setup.activeValue] !== 0) {
-				this.squareValue = this.$store.state.setup.activeValue;
-				this.$store.state.play.gameGridValues[this.reference] = this.squareValue;
+			} else if (this.availablePoints !== 0) {
+				this.squareValue = this.activeValue;
+				this.$store.commit('storeGameGridValue', this.reference, this.squareValue);
 				if (this.squareValue) {
-					this.$store.state.setup.availablePoints[this.squareValue] --;
+					this.$store.commit('decrementAvailablePoints', this.squareValue);
 				}
 			}
 			console.log(this.$store.state.setup.availablePoints)

@@ -28,11 +28,11 @@ export default {
 	methods: {
 		activated: function () {
       if (this.$store.state.setup.active === this.reference) {
-        this.$store.state.setup.active = null;
-        this.$store.state.setup.activeValue = null;
+        this.$store.commit('setActive', null);
+        this.$store.commit('setActiveValue', null);
       } else {
-        this.$store.state.setup.active = this.reference;
-        this.$store.state.setup.activeValue = this.points;
+        this.$store.commit('setActive', this.reference);
+        this.$store.commit('setActiveValue', this.points);
       }
 		}
 	}

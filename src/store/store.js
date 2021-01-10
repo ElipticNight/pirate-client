@@ -13,5 +13,22 @@ export const store = new Vuex.Store({
         play: {
             gameGridValues: {}
         },
+    },
+    mutations: {
+        setActive(state, value) {
+            state.setup.active = value;
+        },
+        setActiveValue(state, value) {
+            state.setup.activeValue = value;
+        },
+        incrementAvailablePoints(state, points) {
+            state.setup.availablePoints[points] ++;
+        },
+        decrementAvailablePoints(state, points) {
+            state.setup.availablePoints[points] --;
+        },
+        storeGameGridValue(state, index, value) {
+            state.play.gameGridValues[index] = value;
+        }
     }
 })
