@@ -5,6 +5,9 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        test: 'test value'
+        setup: {
+            active: null
+        },
+        play: {},
     }
 })

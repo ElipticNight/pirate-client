@@ -11,15 +11,19 @@
 
 <script>
 export default {
-  props: ["Value", "Availability"],
-  data: function() {
-		return {
-			isActivated: false
-		};
+  props: ["Value", "Availability", "reference"],
+  computed: {
+		isActivated() {
+			return (this.$store.state.setup.active === this.reference);
+		}
 	},
 	methods: {
 		activated: function () {
-			this.isActivated = !this.isActivated;
+      if (this.$store.state.setup.active === this.reference) {
+        this.$store.state.setup.active = this.null;
+      } else {
+        this.$store.state.setup.active = this.reference;
+      }
 		}
 	}
 }

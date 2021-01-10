@@ -46,8 +46,6 @@ export default {
       console.log(response);
     });
 
-    console.log(this.$store.state.test);
-
     axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
       response => {
         console.log(response.data);
