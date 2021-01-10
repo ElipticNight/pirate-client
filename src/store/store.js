@@ -27,8 +27,8 @@ export const store = new Vuex.Store({
         decrementAvailablePoints(state, points) {
             state.setup.availablePoints[points] --;
         },
-        storeGameGridValue(state, index, value) {
-            state.play.gameGridValues[index] = value;
+        storeGameGridValue(state, payload) {
+            state.play.gameGridValues[payload[0]] = payload[1];
         }
     }
 })

@@ -29,10 +29,11 @@ export default {
 					this.$store.commit('decrementAvailablePoints', this.activeValue);
 					this.squareValue = this.activeValue;
 				}
-				this.$store.commit('storeGameGridValue', this.reference, this.squareValue);
+				this.$store.commit('storeGameGridValue', [this.reference, this.squareValue]);
 			} else {
 				console.log('out of points');
 			}
+			console.log(this.$store.state.play.gameGridValues);
 		}
 	}
 }
