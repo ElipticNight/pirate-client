@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-for="i in 4" :key="i">
-      <PointSquare></PointSquare>
+    <div v-for="(Availability, Points) in PointsAvailable[0]" :key="Points">
+      <PointSquare :Value="Points" :Availability="Availability"></PointSquare>
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@ import PointSquare from "@/components/setup/PointSquare.vue";
 
 export default {
   components: { PointSquare },
-  props: ["PointsAvailable"]
+  props: ["PointsAvailable"],
 }
 </script>
 

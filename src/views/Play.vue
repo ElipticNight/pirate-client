@@ -7,7 +7,12 @@
         <GameGrid></GameGrid>
       </div>
       <div class="right-sidebar">
-        <PointSquaresList></PointSquaresList>
+        <PointSquaresList :PointsAvailable="[{
+          200: 25,
+          1000: 10,
+          3000: 3,
+          5000: 1
+        }]"></PointSquaresList>
       </div>
       <div class="bottom">
         <ActionSquaresList></ActionSquaresList>

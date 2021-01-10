@@ -1,15 +1,17 @@
 <template>
   <div class="wrapper">
-    <div class="box"></div>
+    <div class="box">
+      {{ Value }}
+    </div>
     <div class="number">
-      x 25
+      {{ Availability }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["PointsAvailable"]
+  props: ["Value", "Availability"]
 }
 </script>
 
