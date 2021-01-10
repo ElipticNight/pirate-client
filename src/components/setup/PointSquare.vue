@@ -4,7 +4,7 @@
       {{ points }}
     </div>
     <div class="number">
-      x {{ availability }}
+      x {{ available }}
     </div>
   </div>
 </template>
@@ -14,9 +14,17 @@ export default {
   props: ["points", "availability", "reference"],
   computed: {
 		isActivated() {
-			return (this.$store.state.setup.active === this.reference);
-		}
-	},
+			return this.$store.state.setup.active === this.reference;
+    },
+    available() {
+      //this wont be reactive due to it being direct array manipulation
+      //find the workaround
+      return this.$store.state.setup.availablePoints[this.points];
+    }
+  },
+  created() {
+    this.$store.state.setup.availablePoints[this.points] = this.availability;
+  },
 	methods: {
 		activated: function () {
       if (this.$store.state.setup.active === this.reference) {

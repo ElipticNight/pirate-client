@@ -17,7 +17,7 @@ export default {
       return Object.keys(this.PointsAvailable[0]);
     }
   },
-  mounted() {
+  created() {
     console.log(this.PointsAvailable[0]);
   }
 }

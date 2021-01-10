@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
     state: {
         setup: {
             active: null,
-            activeValue: null
+            activeValue: null,
+            availablePoints: {}
         },
         play: {
             gameGridValues: {}

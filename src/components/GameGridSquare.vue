@@ -17,13 +17,15 @@ export default {
 	methods: {
 		activated: function () {
 			if(this.squareValue === this.$store.state.setup.activeValue) {
-				this.squareValue = null;
 				this.$store.state.play.gameGridValues[this.reference] = null;
+				this.$store.state.setup.availablePoints[this.squareValue] ++;
+				this.squareValue = null;
 			} else {
 				this.squareValue = this.$store.state.setup.activeValue;
 				this.$store.state.play.gameGridValues[this.reference] = this.squareValue;
+				this.$store.state.setup.availablePoints[this.squareValue] --;
 			}
-			console.log(this.$store.state.play.gameGridValues)
+			console.log(this.$store.state.setup.availablePoints)
 		}
 	}
 }
