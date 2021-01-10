@@ -2,7 +2,7 @@
 	<div>
 		<button @click="triggerTest()" hidden>click me</button>
 		<div class="grid-container" :style="cssVars">
-			<GameGridSquare v-for="i in squareNos" :key="i" ref="gridSquare"></GameGridSquare>
+			<GameGridSquare v-for="i in squareNos" :key="i" :reference="i" ref="gridSquare"></GameGridSquare>
 		</div>
   </div>
 </template>

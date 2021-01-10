@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="(key, value, idx) in PointsAvailable[0]" :key="idx">
-      <PointSquare :Points="value" :Availability="key" :reference="idx"></PointSquare>
+      <PointSquare :points="value" :availability="key" :reference="idx"></PointSquare>
     </div>
   </div>
 </template>

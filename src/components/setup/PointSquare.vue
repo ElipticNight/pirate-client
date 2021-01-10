@@ -1,17 +1,17 @@
 <template>
   <div class="wrapper">
     <div @click="activated()" class="box" v-bind:class="{ activated: isActivated }">
-      {{ Points }}
+      {{ points }}
     </div>
     <div class="number">
-      x {{ Availability }}
+      x {{ availability }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["Points", "Availability", "reference"],
+  props: ["points", "availability", "reference"],
   computed: {
 		isActivated() {
 			return (this.$store.state.setup.active === this.reference);
@@ -20,9 +20,11 @@ export default {
 	methods: {
 		activated: function () {
       if (this.$store.state.setup.active === this.reference) {
-        this.$store.state.setup.active = this.null;
+        this.$store.state.setup.active = null;
+        this.$store.state.setup.activeValue = null;
       } else {
         this.$store.state.setup.active = this.reference;
+        this.$store.state.setup.activeValue = this.points;
       }
 		}
 	}
