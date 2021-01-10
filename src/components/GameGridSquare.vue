@@ -18,20 +18,21 @@ export default {
 		activated: function () {
 			this.activeValue = this.$store.state.setup.activeValue;
 			this.availablePoints = this.$store.state.setup.availablePoints[this.activeValue];
-			if(this.squareValue === this.activeValue) {
-				this.$store.commit('storeGameGridValue', this.reference, null);
-				if (this.squareValue) {
-					this.$store.commit('incrementAvailablePoints', this.squareValue);
+
+			if(this.squareValue !== null) {
+				this.$store.commit('incrementAvailablePoints', this.squareValue);
+			} 
+			if(this.availablePoints !== 0 || this.squareValue === this.activeValue) {
+				if(this.squareValue === this.activeValue) {
+					this.squareValue = null;
+				} else {
+					this.$store.commit('decrementAvailablePoints', this.activeValue);
+					this.squareValue = this.activeValue;
 				}
-				this.squareValue = null;
-			} else if (this.availablePoints !== 0) {
-				this.squareValue = this.activeValue;
 				this.$store.commit('storeGameGridValue', this.reference, this.squareValue);
-				if (this.squareValue) {
-					this.$store.commit('decrementAvailablePoints', this.squareValue);
-				}
+			} else {
+				console.log('out of points');
 			}
-			console.log(this.$store.state.setup.availablePoints)
 		}
 	}
 }
