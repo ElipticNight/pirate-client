@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="box">
+    <div @click="activated()" class="box" v-bind:class="{ activated: isActivated }">
       {{ Value }}
     </div>
     <div class="number">
@@ -11,7 +11,17 @@
 
 <script>
 export default {
-  props: ["Value", "Availability"]
+  props: ["Value", "Availability"],
+  data: function() {
+		return {
+			isActivated: false
+		};
+	},
+	methods: {
+		activated: function () {
+			this.isActivated = !this.isActivated;
+		}
+	}
 }
 </script>
 
@@ -25,6 +35,9 @@ export default {
     width: 7vh;
     height: 7vh;
     border: solid 1px black;
+  }
+  .activated {
+    background-color: salmon;
   }
 }
 </style>
