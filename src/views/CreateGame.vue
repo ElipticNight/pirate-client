@@ -23,7 +23,7 @@
 </template>
 <script>
 import axios from "axios";
-import Checkbox from "../components/Checkbox.vue";
+import Checkbox from "@/components/Checkbox.vue";
 
 export default {
   components: { Checkbox },

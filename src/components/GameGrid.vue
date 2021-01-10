@@ -8,13 +8,14 @@
 </template>
 
 <script>
-import GameGridSquare from "../components/GameGridSquare.vue";
+import GameGridSquare from "@/components/GameGridSquare.vue";
 
 export default {
 	components: { GameGridSquare },
 	data: function() {
 		return {
 			gridSize: 7,
+			squareTypes: [1, 2, 3, 4, 5, 6, 7, 8, "200", "1000", "3000", "5000"]
 		};
 	},
 	computed: {
@@ -37,8 +38,8 @@ export default {
 
 <style lang="scss" scoped>
 .grid-container {
-    width: 75vh;
-    height: 75vh;
+    width: 70vh;
+    height: 70vh;
     display: grid;
     grid-template-rows: repeat(var(--grid-dimensions), 1fr);
 		grid-template-columns: repeat(var(--grid-dimensions), 1fr);

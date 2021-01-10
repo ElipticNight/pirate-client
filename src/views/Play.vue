@@ -1,8 +1,17 @@
 <template>
   <div class="base-window">
     <div v-if="gameState === 'setup'" class="setup">
-      <GameGrid></GameGrid>
-      <SquareList></SquareList>
+      <div class="left-sidebar">
+      </div>
+      <div class="centre">
+        <GameGrid></GameGrid>
+      </div>
+      <div class="right-sidebar">
+        <PointSquaresList></PointSquaresList>
+      </div>
+      <div class="bottom">
+        <ActionSquaresList></ActionSquaresList>
+      </div>
     </div>
     <div v-if="gameState === 'play'" class="play">
       <GameGrid></GameGrid>
@@ -14,11 +23,12 @@
 </template>
 <script>
 import axios from "axios";
-import GameGrid from "../components/GameGrid.vue";
-import SquareList from "../components/SquareList.vue";
+import GameGrid from "@/components/GameGrid.vue";
+import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
+import PointSquaresList from "@/components/setup/PointSquaresList.vue";
 
 export default {
-  components: { GameGrid, SquareList },
+  components: { GameGrid, ActionSquaresList, PointSquaresList },
   name: "Play",
   data: function() {
     return {
@@ -57,7 +67,9 @@ export default {
 <style lang="scss" scoped>
 .setup {
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 2fr 10fr 2fr;
+  grid-template-rows: 9fr 1fr;
   column-gap: 10vh;
+  justify-items: center;
 }
 </style>
