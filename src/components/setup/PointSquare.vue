@@ -4,7 +4,7 @@
       {{ Value }}
     </div>
     <div class="number">
-      {{ Availability }}
+      x {{ Availability }}
     </div>
   </div>
 </template>
@@ -39,6 +39,20 @@ export default {
     width: 7vh;
     height: 7vh;
     border: solid 1px black;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 7vh;
+    font-size: large;
+    color: black;
+    font-weight: bold;
+  }
+  .number {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 7vh;
+    font-size: large;
+    color: black;
+    font-weight: bold;
   }
   .activated {
     background-color: salmon;
