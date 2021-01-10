@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-for="idx in PointsAvailableKeys.length" :key="idx">
-      <PointSquare :Value="PointsAvailableKeys[idx-1]" :Availability="PointsAvailable[0][PointsAvailableKeys[idx-1]]" :reference="idx-1"></PointSquare>
+    <div v-for="(key, value, idx) in PointsAvailable[0]" :key="idx">
+      <PointSquare :Points="value" :Availability="key" :reference="idx"></PointSquare>
     </div>
   </div>
 </template>
