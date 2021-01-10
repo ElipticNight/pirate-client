@@ -23,7 +23,7 @@ export default {
     }
   },
   created() {
-    this.$store.state.setup.availablePoints[this.points] = this.availability;
+    this.$set(this.$store.state.setup.availablePoints, this.points, this.availability);
   },
 	methods: {
 		activated: function () {

@@ -18,12 +18,16 @@ export default {
 		activated: function () {
 			if(this.squareValue === this.$store.state.setup.activeValue) {
 				this.$store.state.play.gameGridValues[this.reference] = null;
-				this.$store.state.setup.availablePoints[this.squareValue] ++;
+				if (this.squareValue) {
+					this.$store.state.setup.availablePoints[this.squareValue] ++;
+				}
 				this.squareValue = null;
-			} else {
+			} else if (this.$store.state.setup.availablePoints[this.$store.state.setup.activeValue] !== 0) {
 				this.squareValue = this.$store.state.setup.activeValue;
 				this.$store.state.play.gameGridValues[this.reference] = this.squareValue;
-				this.$store.state.setup.availablePoints[this.squareValue] --;
+				if (this.squareValue) {
+					this.$store.state.setup.availablePoints[this.squareValue] --;
+				}
 			}
 			console.log(this.$store.state.setup.availablePoints)
 		}
