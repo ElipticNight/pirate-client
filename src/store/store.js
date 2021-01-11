@@ -8,21 +8,19 @@ export const store = new Vuex.Store({
         setup: {
             active: null,
             activeValue: null,
-            availablePoints: {
+            availablePointsActions: {
                 200: 25,
                 1000: 10,
                 3000: 3,
-                5000: 1
-            },
-            availableActions: {
-                4: "A",
-                5: "B",
-                6: "C",
-                7: "D",
-                8: "E",
-                9: "F",
-                10: "G",
-                11: "H"
+                5000: 1,
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1,
+                "E": 1,
+                "F": 1,
+                "G": 1,
+                "H": 1
             }
         },
         play: {
@@ -36,11 +34,11 @@ export const store = new Vuex.Store({
         setActiveValue(state, value) {
             state.setup.activeValue = value;
         },
-        incrementAvailablePoints(state, points) {
-            state.setup.availablePoints[points] ++;
+        incrementAvailablePointsActions(state, value) {
+            state.setup.availablePointsActions[value] ++;
         },
-        decrementAvailablePoints(state, points) {
-            state.setup.availablePoints[points] --;
+        decrementAvailablePointsActions(state, value) {
+            state.setup.availablePointsActions[value] --;
         },
         storeGameGridValue(state, payload) {
             state.play.gameGridValues[payload[0]] = payload[1];

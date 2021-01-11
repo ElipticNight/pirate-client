@@ -1,23 +1,20 @@
 <template>
   <div class="container">
     <div v-for="idx in this.actionSquares" :key="idx">
-      <ActionSquare :reference="idx"></ActionSquare>
+      <PointActionSquare :reference="idx"></PointActionSquare>
     </div>
   </div>
 </template>
 
 <script>
-import ActionSquare from "@/components/setup/ActionSquare.vue";
+import PointActionSquare from "@/components/setup/PointActionSquare.vue";
 
 export default {
-  components: { ActionSquare },
+  components: { PointActionSquare },
   computed: {
     actionSquares() {
       return Array.from(new Array(8), (x, i) => i + 4);
     }
-  },
-  mounted() {
-    console.log(this.actionSquares);
   }
 }
 </script>

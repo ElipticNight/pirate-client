@@ -8,12 +8,7 @@
         <GameGrid></GameGrid>
       </div>
       <div class="right-sidebar">
-        <PointSquaresList :PointsAvailable="[{
-          200: 25,
-          1000: 10,
-          3000: 3,
-          5000: 1
-        }]"></PointSquaresList>
+        <PointSquaresList></PointSquaresList>
       </div>
       <div class="bottom">
         <button class="ready-button">Ready!</button>

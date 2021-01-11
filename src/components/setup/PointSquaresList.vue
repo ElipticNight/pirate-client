@@ -1,24 +1,20 @@
 <template>
   <div class="container">
-    <div v-for="(key, value, idx) in PointsAvailable[0]" :key="idx">
-      <PointSquare :reference="idx"></PointSquare>
+    <div v-for="idx in pointSquares" :key="idx">
+      <PointActionSquare :reference="idx"></PointActionSquare>
     </div>
   </div>
 </template>
 
 <script>
-import PointSquare from "@/components/setup/PointSquare.vue";
+import PointActionSquare from "@/components/setup/PointActionSquare.vue";
 
 export default {
-  components: { PointSquare },
-  props: ["PointsAvailable"],
+  components: { PointActionSquare },
   computed: {
-    PointsAvailableKeys() {
-      return Object.keys(this.PointsAvailable[0]);
+    pointSquares() {
+      return Array.from(new Array(4), (x, i) => i);
     }
-  },
-  created() {
-    console.log(this.PointsAvailable[0]);
   }
 }
 </script>
