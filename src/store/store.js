@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
                 1000: 10,
                 3000: 3,
                 5000: 1,
+                "rob": 1,
                 "Gift": 1,
                 "Skull": 1,
                 "Swap": 1,
@@ -25,7 +26,7 @@ export const store = new Vuex.Store({
             }
         },
         play: {
-            gameGridValues: {}
+            gameGridValues: new Array(50).fill(null)
         },
     },
     mutations: {
@@ -43,6 +44,27 @@ export const store = new Vuex.Store({
         },
         storeGameGridValue(state, payload) {
             state.play.gameGridValues[payload[0]] = payload[1];
+        },
+        randomiseGameGridValues(state) {
+            var tempGameValues = [];
+            var availablePointsActions = state.setup.availablePointsActions
+            for (var key in availablePointsActions) {
+                for (let i = 0; i < availablePointsActions[key]; i++) {
+                    tempGameValues.push(key);
+                }
+                //
+            }
+            let randomIndex;
+            let randomValue;
+            let length = tempGameValues.length;
+            for (let index = 0; index < length; index++) {
+                randomIndex = Math.floor(Math.random() * (49 - index));
+                randomValue = tempGameValues[randomIndex];
+                tempGameValues.splice(randomIndex, 1);
+                Vue.set(state.play.gameGridValues, index, randomValue);
+                state.setup.availablePointsActions[randomValue] --;
+            }
+            console.log(state.play.gameGridValues);
         }
     }
 })

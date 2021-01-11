@@ -11,6 +11,7 @@
         <PointSquaresList></PointSquaresList>
       </div>
       <div class="bottom">
+        <button @click="randomise()" class="randomise-button">Randomise</button>
         <button class="ready-button">Ready!</button>
       </div>
     </div>
@@ -41,6 +42,7 @@ export default {
     window.Echo.channel(this.channel).listen(".event", response => {
       console.log(response);
     });
+    console.log(this.$store.state.play.gameGridValues);
 
     axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
       response => {
@@ -61,6 +63,10 @@ export default {
           console.log(error);
         }
       );
+    },
+    randomise: function() {
+      this.$store.commit('randomiseGameGridValues', null);
+      console.log(this.$store.state.play.gameGridValues);
     }
   },
 };
@@ -77,16 +83,26 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     .ready-button {
       height: 7vh;
       width: 50vh;
-      background-color: darkblue;
+      background-color: rgb(2, 71, 2);
       color: white;
       border: none;
       border-radius: 20px;
       &:hover{
-        box-shadow: 0px 0px 1px 1px darkblue;
+        box-shadow: 0px 0px 1px 1px rgb(2, 71, 2);
       }
+    }
+    .randomise-button {
+      margin: 1vh;
+      height: 5vh;
+      width: 25vh;
+      background-color: darkblue;
+      color: white;
+      border: none;
+      border-radius: 20px;
     }
   }
 }

@@ -9,10 +9,10 @@
 <script>
 export default {
 	props: ["reference"],
-	data: function() {
-		return {
-			squareValue: null
-		};
+	computed: {
+		squareValue() {
+			return this.$store.state.play.gameGridValues[this.reference];
+		}
 	},
 	methods: {
 		activated: function () {
@@ -33,7 +33,7 @@ export default {
 			} else {
 				console.log('out of points');
 			}
-			console.log(this.$store.state.setup.availablePointsActions);
+			console.log(this.$store.state.play.gameGridValues);
 		}
 	}
 }
