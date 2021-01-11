@@ -8,7 +8,12 @@ export const store = new Vuex.Store({
         setup: {
             active: null,
             activeValue: null,
-            availablePoints: {},
+            availablePoints: {
+                200: 25,
+                1000: 10,
+                3000: 3,
+                5000: 1
+            },
             availableActions: {
                 4: "A",
                 5: "B",

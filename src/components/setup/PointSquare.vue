@@ -11,17 +11,17 @@
 
 <script>
 export default {
-  props: ["points", "availability", "reference"],
+  props: ["reference"],
   computed: {
 		isActivated() {
 			return this.$store.state.setup.active === this.reference;
     },
+    points() {
+      return Object.keys(this.$store.state.setup.availablePoints)[this.reference]
+    },
     available() {
       return this.$store.state.setup.availablePoints[this.points];
     }
-  },
-  created() {
-    this.$set(this.$store.state.setup.availablePoints, this.points, this.availability);
   },
 	methods: {
 		activated: function () {
