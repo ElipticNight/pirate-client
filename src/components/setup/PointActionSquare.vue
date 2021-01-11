@@ -1,6 +1,6 @@
 <template>
   <div v-bind:class="{ wrapper: isPoints }">
-    <div @click="activated()" class="box" v-bind:class="{ activated: isActivated }">
+    <div @click="activated()" class="box" v-bind:class="{ activated: isActivated, unavailable: !available }">
       {{ value }}
     </div>
     <div v-if="isPoints" class="number">
@@ -70,6 +70,10 @@ export default {
   user-select: none;
 }
 .activated {
-  background-color: salmon;
+  background-color: lightblue;
+}
+.unavailable {
+  box-shadow: 0px 0px 2px 3px red;
+  background-color: lightcoral;
 }
 </style>
