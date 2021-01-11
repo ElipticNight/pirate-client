@@ -13,7 +13,7 @@ export default {
   components: { PointActionSquare },
   computed: {
     actionSquares() {
-      return Array.from(new Array(8), (x, i) => i + 4);
+      return Array.from(new Array(9), (x, i) => i + 4);
     }
   }
 }
@@ -25,7 +25,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   column-gap: 2vh;
   justify-content: space-evenly;
   align-items: center;

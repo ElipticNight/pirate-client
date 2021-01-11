@@ -13,14 +13,15 @@ export const store = new Vuex.Store({
                 1000: 10,
                 3000: 3,
                 5000: 1,
-                "A": 1,
-                "B": 1,
-                "C": 1,
-                "D": 1,
-                "E": 1,
-                "F": 1,
-                "G": 1,
-                "H": 1
+                "Gift": 1,
+                "Skull": 1,
+                "Swap": 1,
+                "Choose": 1,
+                "Shield": 1,
+                "Mirror": 1,
+                "Bomb": 1,
+                "Double": 1,
+                "Bank": 1
             }
         },
         play: {
