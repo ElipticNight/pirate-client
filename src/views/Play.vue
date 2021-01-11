@@ -42,7 +42,6 @@ export default {
     window.Echo.channel(this.channel).listen(".event", response => {
       console.log(response);
     });
-    console.log(this.$store.state.play.gameGridValues);
 
     axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
       response => {
@@ -66,7 +65,6 @@ export default {
     },
     randomise: function() {
       this.$store.commit('randomiseGameGridValues', null);
-      console.log(this.$store.state.play.gameGridValues);
     }
   },
 };

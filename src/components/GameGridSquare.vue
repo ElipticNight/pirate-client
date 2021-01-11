@@ -10,8 +10,13 @@
 export default {
 	props: ["reference"],
 	computed: {
-		squareValue() {
-			return this.$store.state.play.gameGridValues[this.reference];
+		squareValue: {
+			get: function() {
+				return this.$store.state.play.gameGridValues[this.reference-1];
+			},
+			set: function(newValue) {
+				this.$store.state.play.gameGridValues[this.reference-1] = newValue;
+			}
 		}
 	},
 	methods: {
@@ -24,16 +29,14 @@ export default {
 					this.$store.commit('incrementAvailablePointsActions', this.squareValue);
 				}
 				if(this.squareValue === this.activeValue) {
-					this.squareValue = null;
+					this.$store.commit('storeGameGridValue', [this.reference, null]);
 				} else {
 					this.$store.commit('decrementAvailablePointsActions', this.activeValue);
-					this.squareValue = this.activeValue;
+					this.$store.commit('storeGameGridValue', [this.reference, this.activeValue]);
 				}
-				this.$store.commit('storeGameGridValue', [this.reference, this.squareValue]);
 			} else {
 				console.log('out of points');
 			}
-			console.log(this.$store.state.play.gameGridValues);
 		}
 	}
 }

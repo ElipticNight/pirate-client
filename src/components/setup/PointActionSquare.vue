@@ -28,7 +28,6 @@ export default {
   },
 	methods: {
 		activated: function () {
-      console.log(this.reference);
       if (this.$store.state.setup.active === this.reference) {
         this.$store.commit('setActive', null);
         this.$store.commit('setActiveValue', null);
