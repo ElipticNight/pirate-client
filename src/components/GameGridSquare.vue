@@ -19,10 +19,10 @@ export default {
 			this.activeValue = this.$store.state.setup.activeValue;
 			this.availablePointsActions = this.$store.state.setup.availablePointsActions[this.activeValue];
 
-			if(this.squareValue !== null && (this.availablePointsActions !== 0 || this.squareValue === this.activeValue)) {
-				this.$store.commit('incrementAvailablePointsActions', this.squareValue);
-			} 
 			if(this.availablePointsActions !== 0 || this.squareValue === this.activeValue) {
+				if(this.squareValue !== null) {
+					this.$store.commit('incrementAvailablePointsActions', this.squareValue);
+				}
 				if(this.squareValue === this.activeValue) {
 					this.squareValue = null;
 				} else {
