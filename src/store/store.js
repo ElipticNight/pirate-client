@@ -57,12 +57,22 @@ export const store = new Vuex.Store({
             let randomIndex;
             let randomValue;
             let length = tempGameValues.length;
-            for (let index = 0; index < length; index++) {
-                randomIndex = Math.floor(Math.random() * (49 - index));
+            let i = 0;
+            
+            console.log(tempGameValues);
+            while (i < length) {
+                randomIndex = Math.floor(Math.random() * (length - i));
                 randomValue = tempGameValues[randomIndex];
                 tempGameValues.splice(randomIndex, 1);
-                Vue.set(state.play.gameGridValues, index, randomValue);
+                while (state.play.gameGridValues[i] !== null) {
+                    i++;
+                    length++;
+                }
+                Vue.set(state.play.gameGridValues, i, randomValue);
                 state.setup.availablePointsActions[randomValue] --;
+                
+                i++;
+                console.log(i, randomValue);
             }
         }
     }

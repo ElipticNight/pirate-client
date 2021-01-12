@@ -63,7 +63,7 @@ export default {
   text-align: center;
   vertical-align: middle;
   line-height: 7vh;
-  font-size: large;
+  font-size: 2vh;
   color: black;
   font-weight: bold;
   user-select: none;
