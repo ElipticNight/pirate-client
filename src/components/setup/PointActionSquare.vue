@@ -50,7 +50,6 @@ export default {
 .box {
   width: 7vh;
   height: 7vh;
-  border: solid 1px black;
   text-align: center;
   vertical-align: middle;
   line-height: 7vh;
@@ -58,6 +57,8 @@ export default {
   color: black;
   font-weight: bold;
   user-select: none;
+  background-color: lightskyblue;
+  border: solid 1px lightskyblue;
 }
 .number {
   text-align: center;
@@ -69,10 +70,13 @@ export default {
   user-select: none;
 }
 .activated {
-  background-color: lightblue;
+  box-shadow: 0px 0px 2px 3px blue;
+  background-color: cornflowerblue !important;
+  border: solid 1px cornflowerblue;
 }
 .unavailable {
-  box-shadow: 0px 0px 2px 3px red;
-  background-color: lightcoral;
+  box-shadow: 0px 0px 2px 3px green;
+  background-color: turquoise;
+  border: solid 1px green;
 }
 </style>
