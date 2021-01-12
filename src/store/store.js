@@ -48,6 +48,7 @@ export const store = new Vuex.Store({
         randomiseGameGridValues(state) {
             var tempGameValues = [];
             var availablePointsActions = state.setup.availablePointsActions
+            
             for (var key in availablePointsActions) {
                 for (let i = 0; i < availablePointsActions[key]; i++) {
                     tempGameValues.push(key);
@@ -59,7 +60,6 @@ export const store = new Vuex.Store({
             let length = tempGameValues.length;
             let i = 0;
             
-            console.log(tempGameValues);
             while (i < length) {
                 randomIndex = Math.floor(Math.random() * (length - i));
                 randomValue = tempGameValues[randomIndex];
@@ -72,7 +72,6 @@ export const store = new Vuex.Store({
                 state.setup.availablePointsActions[randomValue] --;
                 
                 i++;
-                console.log(i, randomValue);
             }
         }
     }
