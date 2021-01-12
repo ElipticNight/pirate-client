@@ -12,7 +12,7 @@
       </div>
       <div class="bottom">
         <button @click="randomise()" class="randomise-button">Randomise</button>
-        <button class="ready-button">Ready!</button>
+        <button @click="ready()" class="ready-button">Ready!</button>
       </div>
     </div>
     <div v-if="gameState === 'play'" class="play">
@@ -65,6 +65,16 @@ export default {
     },
     randomise: function() {
       this.$store.commit('randomiseGameGridValues', null);
+    },
+    ready: function() {
+      axios.get("http://127.0.0.1:8000/ready/" + this.channel).then(
+        response => {
+          console.log(response.data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   },
 };

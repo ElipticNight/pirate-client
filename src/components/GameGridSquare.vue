@@ -51,7 +51,7 @@ export default {
 	justify-content: center;
 	.square-value {
 		text-align: center;
-		font-size: large;
+		font-size: 1.5vh;
     color: black;
     font-weight: bold;
     user-select: none;
