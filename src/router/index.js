@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import CreateGame from "../views/CreateGame.vue";
-import JoinGame from "../views/JoinGame.vue";
-import Instructions from "../views/Instructions.vue";
-import Play from "../views/Play.vue";
+import Home from "@/views/Home.vue";
+import CreateGame from "@/views/CreateGame.vue";
+import JoinGame from "@/views/JoinGame.vue";
+import Instructions from "@/views/Instructions.vue";
+import Play from "@/views/Play.vue";
 
 Vue.use(VueRouter);
 

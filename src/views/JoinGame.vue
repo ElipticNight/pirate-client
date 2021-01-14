@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-import RouteButton from "../components/RouteButton.vue";
+import RouteButton from "@/components/RouteButton.vue";
 
 export default {
   components: { RouteButton },
