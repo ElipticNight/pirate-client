@@ -26,7 +26,8 @@ export const store = new Vuex.Store({
             }
         },
         play: {
-            gameGridValues: new Array(50).fill(null)
+            gameGridValues: new Array(50).fill(null),
+            socket: null,
         },
     },
     mutations: {

@@ -31,7 +31,7 @@ export default {
 
   methods: {
     creategame() {
-      axios.get("http://127.0.0.1:8000/createroom").then(
+      axios.post("http://127.0.0.1:3000/createroom").then(
         response => {
           this.channel = response.data;
           this.play();

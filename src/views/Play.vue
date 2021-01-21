@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+//import axios from "axios";
 import GameGrid from "@/components/GameGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
@@ -38,43 +38,50 @@ export default {
     };
   },
   mounted() {
-    this.channel = this.$route.params.channel;
-    window.Echo.channel(this.channel).listen(".event", response => {
-      console.log(response);
-    });
+    this.$store.state.play.socket = new WebSocket("ws://localhost:3000");
+    const socket = this.$store.state.play.socket;
 
-    axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
-      response => {
-        console.log(response.data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    socket.addEventListener('open', function () {
+      console.log('connected to ws server');
+    })
+
+    // this.channel = this.$route.params.channel;
+    // window.Echo.channel(this.channel).listen(".event", response => {
+    //   console.log(response);
+    // });
+
+    // axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
+    //   response => {
+    //     console.log(response.data);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   },
   methods: {
     sendMessage: function() {
-      axios.get("http://127.0.0.1:8000/message/" + this.channel).then(
-        response => {
-          console.log(response.data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      // axios.get("http://127.0.0.1:8000/message/" + this.channel).then(
+      //   response => {
+      //     console.log(response.data);
+      //   },
+      //   error => {
+      //     console.log(error);
+      //   }
+      // );
     },
     randomise: function() {
       this.$store.commit('randomiseGameGridValues', null);
     },
     ready: function() {
-      axios.get("http://127.0.0.1:8000/ready/" + this.channel).then(
-        response => {
-          console.log(response.data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      // axios.get("http://127.0.0.1:8000/ready/" + this.channel).then(
+      //   response => {
+      //     console.log(response.data);
+      //   },
+      //   error => {
+      //     console.log(error);
+      //   }
+      // );
     }
   },
 };
