@@ -7,8 +7,9 @@
 export default {
    watch: {
     '$route' (to, from) {
-      console.log(to, from);
-      this.$store.state.play.socket.close();
+      if(from.name === "Play") {
+        this.$store.state.play.socket.close();
+      }
     }
   }
 }
