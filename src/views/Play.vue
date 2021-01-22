@@ -57,43 +57,16 @@ export default {
         'name': 'temp name'
       }));
     }
-
-    // window.Echo.channel(this.channel).listen(".event", response => {
-    //   console.log(response);
-    // });
-
-    // axios.get("http://127.0.0.1:8000/joinroom/" + this.channel).then(
-    //   response => {
-    //     console.log(response.data);
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
-    // );
   },
   methods: {
     sendMessage: function() {
-      // axios.get("http://127.0.0.1:8000/message/" + this.channel).then(
-      //   response => {
-      //     console.log(response.data);
-      //   },
-      //   error => {
-      //     console.log(error);
-      //   }
-      // );
+      //
     },
     randomise: function() {
       this.$store.commit('randomiseGameGridValues', null);
     },
     ready: function() {
-      // axios.get("http://127.0.0.1:8000/ready/" + this.channel).then(
-      //   response => {
-      //     console.log(response.data);
-      //   },
-      //   error => {
-      //     console.log(error);
-      //   }
-      // );
+      //
     }
   },
 };
