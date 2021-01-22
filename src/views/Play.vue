@@ -40,12 +40,24 @@ export default {
   mounted() {
     this.$store.state.play.socket = new WebSocket("ws://localhost:3000");
     const socket = this.$store.state.play.socket;
+    const channel = this.$route.params.channel;
 
     socket.addEventListener('open', function () {
       console.log('connected to ws server');
     })
 
-    // this.channel = this.$route.params.channel;
+    socket.addEventListener('message', function (event) {
+      console.log('message recieved from server:    ', event.data);
+    })
+
+    socket.onopen = function() {
+      socket.send(JSON.stringify({
+        'target': 'joinroom',
+        'roomid': channel,
+        'name': 'temp name'
+      }));
+    }
+
     // window.Echo.channel(this.channel).listen(".event", response => {
     //   console.log(response);
     // });
