@@ -9,10 +9,22 @@
           <h3>settings:</h3>
         </div>
         <div class="content-body">
-          <checkbox label="One"></checkbox>
-          <checkbox label="Two"></checkbox>
-          <checkbox label="Three"></checkbox>
-          <checkbox label="Four"></checkbox>
+          <label class="label-container">
+            <input type="checkbox" v-model="one"/>
+            One
+          </label>
+            <label class="label-container">
+            <input type="checkbox" v-model="two"/>
+            Two
+          </label>
+            <label class="label-container">
+            <input type="checkbox" v-model="three"/>
+            Three
+          </label>
+            <label class="label-container">
+            <input type="checkbox" v-model="four"/>
+            Four
+          </label>
         </div>
       </div>
       <div class="base-submit">
@@ -23,15 +35,25 @@
 </template>
 <script>
 import axios from "axios";
-import Checkbox from "@/components/Checkbox.vue";
 
 export default {
-  components: { Checkbox },
   name: "CreateGame",
-
+  data: function() {
+    return {
+      one: false,
+      two: false,
+      three: false,
+      four: false
+    }
+  },
   methods: {
     creategame() {
-      axios.post("http://127.0.0.1:3000/createroom").then(
+      axios.post("http://127.0.0.1:3000/createroom", {
+        one: this.one,
+        two: this.two,
+        three: this.three,
+        four: this.four
+      }).then(
         response => {
           this.channel = response.data;
           this.play();
@@ -57,6 +79,14 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   text-align: left;
+  .label-container {
+    color: darkblue;
+    padding: 10px 20px;
+    border-radius: 20px;
+    &:hover {
+      background-color: #2a4a6d;
+    }
+  }
 }
 .create-button {
   height: 75px;
