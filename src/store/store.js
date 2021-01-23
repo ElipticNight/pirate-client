@@ -8,21 +8,37 @@ export const store = new Vuex.Store({
         setup: {
             active: null,
             activeValue: null,
+            basePointsActions: {
+                200: null,
+                1000: null,
+                3000: null,
+                5000: null,
+                "rob": null,
+                "Gift": null,
+                "Skull": null,
+                "Swap": null,
+                "Choose": null,
+                "Shield": null,
+                "Mirror": null,
+                "Bomb": null,
+                "Double": null,
+                "Bank": null
+            },
             availablePointsActions: {
-                200: 25,
-                1000: 10,
-                3000: 3,
-                5000: 1,
-                "rob": 1,
-                "Gift": 1,
-                "Skull": 1,
-                "Swap": 1,
-                "Choose": 1,
-                "Shield": 1,
-                "Mirror": 1,
-                "Bomb": 1,
-                "Double": 1,
-                "Bank": 1
+                200: 0,
+                1000: 0,
+                3000: 0,
+                5000: 0,
+                "rob": 0,
+                "Gift": 0,
+                "Skull": 0,
+                "Swap": 0,
+                "Choose": 0,
+                "Shield": 0,
+                "Mirror": 0,
+                "Bomb": 0,
+                "Double": 0,
+                "Bank": 0
             }
         },
         play: {
@@ -31,6 +47,30 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        setDefaultBasePointsActions(state, size) {
+            if(size === 7) {
+                state.setup.basePointsActions[200] = 25;
+                state.setup.basePointsActions[1000] = 10;
+                state.setup.basePointsActions[3000] = 3;
+                state.setup.basePointsActions[5000] = 1;
+                state.setup.basePointsActions["rob"] = 1;
+                state.setup.basePointsActions["Gift"] = 1;
+                state.setup.basePointsActions["Skull"] = 1;
+                state.setup.basePointsActions["Swap"] = 1;
+                state.setup.basePointsActions["Choose"] = 1;
+                state.setup.basePointsActions["Shield"] = 1;
+                state.setup.basePointsActions["Mirror"] = 1;
+                state.setup.basePointsActions["Bomb"] = 1;
+                state.setup.basePointsActions["Double"] = 1;
+                state.setup.basePointsActions["Bank"] = 1;
+            }
+        },
+        setCustomBasePointsActions() {
+            //
+        },
+        setAvailablePointsActionsToBase(state) {
+            Object.assign(state.setup.availablePointsActions, state.setup.basePointsActions);
+        },
         setActive(state, value) {
             state.setup.active = value;
         },
@@ -46,7 +86,7 @@ export const store = new Vuex.Store({
         storeGameGridValue(state, payload) {
             Vue.set(state.play.gameGridValues, payload[0] - 1, payload[1]);
         },
-        randomiseGameGridValues(state) {
+        randomiseRemainingGameGridValues(state) {
             var tempGameValues = [];
             var availablePointsActions = state.setup.availablePointsActions
             
@@ -73,6 +113,11 @@ export const store = new Vuex.Store({
                 state.setup.availablePointsActions[randomValue] --;
                 
                 i++;
+            }
+        },
+        clearGameGridValues(state) {
+            for (var i = 0; i < state.play.gameGridValues.length; i++) {
+                Vue.set(state.play.gameGridValues, i, null);
             }
         }
     }

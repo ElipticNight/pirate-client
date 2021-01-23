@@ -11,8 +11,14 @@
         <PointSquaresList></PointSquaresList>
       </div>
       <div class="bottom">
-        <button @click="randomise()" class="randomise-button">Randomise</button>
-        <button @click="ready()" class="ready-button">Ready!</button>
+        <div class="row-one">
+          <button @click="randomise()" class="button">Randomise All</button>
+          <button @click="randomiseRemaining()" class="button">Randomise Remaining</button>
+          <button @click="clear()" class="button">Clear</button>
+        </div>
+        <div class="row-two">
+          <button @click="ready()" class="ready-button">Ready!</button>
+        </div>
       </div>
     </div>
     <div v-if="gameState === 'play'" class="play">
@@ -57,13 +63,23 @@ export default {
         'name': 'temp name'
       }));
     }
+    this.$store.commit('setDefaultBasePointsActions', 7);
+    this.$store.commit('setAvailablePointsActionsToBase');
   },
   methods: {
     sendMessage: function() {
       //
     },
     randomise: function() {
-      this.$store.commit('randomiseGameGridValues', null);
+      this.clear();
+      this.randomiseRemaining();
+    },
+    randomiseRemaining: function() {
+      this.$store.commit('randomiseRemainingGameGridValues', null);
+    },
+    clear: function() {
+      this.$store.commit('clearGameGridValues');
+      this.$store.commit('setAvailablePointsActionsToBase');
     },
     ready: function() {
       //
@@ -84,25 +100,32 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .ready-button {
-      height: 7vh;
-      width: 50vh;
-      background-color: rgb(2, 71, 2);
-      color: white;
-      border: none;
-      border-radius: 20px;
-      &:hover{
-        box-shadow: 0px 0px 1px 1px rgb(2, 71, 2);
+    .row-one {
+      .button {
+        margin: 2vh;
+        height: 5vh;
+        width: 20vh;
+        background-color: darkblue;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        &:hover{
+          background-color: blue;
+        }
       }
     }
-    .randomise-button {
-      margin: 1vh;
-      height: 5vh;
-      width: 25vh;
-      background-color: darkblue;
-      color: white;
-      border: none;
-      border-radius: 20px;
+    .row-two {
+      .ready-button {
+        height: 7vh;
+        width: 70vh;
+        background-color: rgb(2, 71, 2);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        &:hover{
+          box-shadow: 0px 0px 1px 1px rgb(2, 71, 2);
+        }
+      }
     }
   }
 }
