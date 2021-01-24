@@ -3,7 +3,17 @@
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+   watch: {
+    '$route' (to, from) {
+      if(from.name === "Play") {
+        this.$store.state.play.socket.close();
+      }
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
