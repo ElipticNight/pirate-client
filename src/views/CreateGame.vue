@@ -64,7 +64,7 @@ export default {
       );
     },
     play() {
-      this.$router.push("/play/" + this.channel);
+      this.$router.push("/play/" + this.channel + '/name');
     }
   }
 };

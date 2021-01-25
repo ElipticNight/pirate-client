@@ -11,6 +11,12 @@
           v-model="roomID"
           placeholder="Room ID"
         />
+        <input
+          class="game-id-button"
+          type="text"
+          v-model="name"
+          placeholder="name"
+        />
       </div>
       <div class="base-submit">
         <RouteButton button-text="Join Game" :route-target="target">
@@ -28,13 +34,14 @@ export default {
 
   data: function() {
     return {
-      roomID: ""
+      roomID: "",
+      name: ""
     };
   },
 
   computed: {
     target: function() {
-      return "play/" + this.roomID;
+      return "play/" + this.roomID + '/' + this.name;
     }
   }
 };

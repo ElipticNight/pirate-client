@@ -47,6 +47,7 @@ export default {
     this.$store.state.play.socket = new WebSocket("ws://localhost:3000");
     const socket = this.$store.state.play.socket;
     const channel = this.$route.params.channel;
+    const name = this.$route.params.name;
 
     socket.addEventListener('open', function () {
       console.log('connected to ws server');
@@ -60,7 +61,7 @@ export default {
       socket.send(JSON.stringify({
         'target': 'joinroom',
         'roomid': channel,
-        'name': 'temp name'
+        'name': name
       }));
     }
     this.$store.commit('setDefaultBasePointsActions', 7);
