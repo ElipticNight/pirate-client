@@ -10,8 +10,9 @@ export default {
 
 <style lang="scss">
 .player{
-  height: 5vh;
-  width: 5vh;
+  height: 20vh;
+  width: 15vh;
   background-color: brown;
+  border-radius: 15px;
 }
 </style>
