@@ -21,6 +21,9 @@
         </div>
       </div>
     </div>
+    <div v-if="gameState === 'ready'" class="ready">
+      <ReadyList></ReadyList>
+    </div>
     <div v-if="gameState === 'play'" class="play">
       <GameGrid></GameGrid>
     </div>
@@ -33,9 +36,10 @@
 import GameGrid from "@/components/GameGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
+import ReadyList from "@/components/setup/ReadyList.vue";
 
 export default {
-  components: { GameGrid, ActionSquaresList, PointSquaresList },
+  components: { GameGrid, ActionSquaresList, PointSquaresList, ReadyList },
   name: "Play",
   data: function() {
     return {
@@ -89,8 +93,10 @@ export default {
         const socket = this.$store.state.play.socket;
         socket.send(JSON.stringify({
           'target': 'ready',
-        'roomid': this.$route.params.room
+          'roomid': this.$route.params.room,
+          'name': this.$route.params.name
         }));
+        this.gameState = "ready";
       }
     }
   },

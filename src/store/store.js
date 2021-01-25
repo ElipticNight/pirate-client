@@ -121,12 +121,16 @@ export const store = new Vuex.Store({
                 i++;
             }
             state.setup.totalAvailablePointsActions = 0;
+            state.setup.active = null;
+            state.setup.activeValue = null;
         },
         clearGameGridValues(state) {
             for (var i = 0; i < state.play.gameGridValues.length; i++) {
                 Vue.set(state.play.gameGridValues, i, null);
             }
             state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
+            state.setup.active = null;
+            state.setup.activeValue = null;
         }
     }
 })
