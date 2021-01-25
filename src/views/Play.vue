@@ -30,7 +30,6 @@
   </div>
 </template>
 <script>
-//import axios from "axios";
 import GameGrid from "@/components/GameGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
@@ -66,6 +65,7 @@ export default {
     }
     this.$store.commit('setDefaultBasePointsActions', 7);
     this.$store.commit('setAvailablePointsActionsToBase');
+    this.$store.commit('clearGameGridValues');
   },
   methods: {
     sendMessage: function() {
@@ -83,7 +83,14 @@ export default {
       this.$store.commit('setAvailablePointsActionsToBase');
     },
     ready: function() {
-      //
+      if(this.$store.state.setup.totalAvailablePointsActions !== 0) {
+        //
+      } else {
+        const socket = this.$store.state.play.socket;
+        socket.send(JSON.stringify({
+          'target': 'ready',
+        }));
+      }
     }
   },
 };

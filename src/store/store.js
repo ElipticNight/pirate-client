@@ -24,6 +24,7 @@ export const store = new Vuex.Store({
                 "Double": null,
                 "Bank": null
             },
+            totalBasePointsActions: 0,
             availablePointsActions: {
                 200: 0,
                 1000: 0,
@@ -39,7 +40,8 @@ export const store = new Vuex.Store({
                 "Bomb": 0,
                 "Double": 0,
                 "Bank": 0
-            }
+            },
+            totalAvailablePointsActions: 0
         },
         play: {
             gameGridValues: new Array(50).fill(null),
@@ -63,6 +65,7 @@ export const store = new Vuex.Store({
                 state.setup.basePointsActions["Bomb"] = 1;
                 state.setup.basePointsActions["Double"] = 1;
                 state.setup.basePointsActions["Bank"] = 1;
+                state.setup.totalBasePointsActions = 7**2;
             }
         },
         setCustomBasePointsActions() {
@@ -70,6 +73,7 @@ export const store = new Vuex.Store({
         },
         setAvailablePointsActionsToBase(state) {
             Object.assign(state.setup.availablePointsActions, state.setup.basePointsActions);
+            state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
         },
         setActive(state, value) {
             state.setup.active = value;
@@ -79,9 +83,11 @@ export const store = new Vuex.Store({
         },
         incrementAvailablePointsActions(state, value) {
             state.setup.availablePointsActions[value] ++;
+            state.setup.totalAvailablePointsActions ++;
         },
         decrementAvailablePointsActions(state, value) {
             state.setup.availablePointsActions[value] --;
+            state.setup.totalAvailablePointsActions --;
         },
         storeGameGridValue(state, payload) {
             Vue.set(state.play.gameGridValues, payload[0] - 1, payload[1]);
@@ -114,11 +120,13 @@ export const store = new Vuex.Store({
                 
                 i++;
             }
+            state.setup.totalAvailablePointsActions = 0;
         },
         clearGameGridValues(state) {
             for (var i = 0; i < state.play.gameGridValues.length; i++) {
                 Vue.set(state.play.gameGridValues, i, null);
             }
+            state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
         }
     }
 })
