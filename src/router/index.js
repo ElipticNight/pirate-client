@@ -30,12 +30,12 @@ const routes = [
     component: Instructions
   },
   {
-    path: "/play/:channel",
+    path: "/play/:room",
     name: "Play",
     component: JoinGame
   },
   {
-    path: "/play/:channel/:name",
+    path: "/play/:room/:name",
     name: "Play",
     component: Play
   },

@@ -55,7 +55,7 @@ export default {
         four: this.four
       }).then(
         response => {
-          this.channel = response.data;
+          this.room = response.data;
           this.play();
         },
         error => {
@@ -64,7 +64,7 @@ export default {
       );
     },
     play() {
-      this.$router.push("/play/" + this.channel + '/name');
+      this.$router.push("/play/" + this.room + '/name');
     }
   }
 };

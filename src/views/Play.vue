@@ -45,7 +45,7 @@ export default {
   mounted() {
     this.$store.state.play.socket = new WebSocket("ws://localhost:3000");
     const socket = this.$store.state.play.socket;
-    const channel = this.$route.params.channel;
+    const room = this.$route.params.room;
     const name = this.$route.params.name;
 
     socket.addEventListener('open', function () {
@@ -59,7 +59,7 @@ export default {
     socket.onopen = function() {
       socket.send(JSON.stringify({
         'target': 'joinroom',
-        'roomid': channel,
+        'roomid': room,
         'name': name
       }));
     }
@@ -89,6 +89,7 @@ export default {
         const socket = this.$store.state.play.socket;
         socket.send(JSON.stringify({
           'target': 'ready',
+        'roomid': this.$route.params.room
         }));
       }
     }
