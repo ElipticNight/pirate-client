@@ -63,7 +63,7 @@ export default {
 
       if(message.type === "setup") {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
-      } if(message.type === "client joined") {
+      } else if(message.type === "client joined") {
         self.$store.commit('addNewPlayer', message.clientName);
       } else if(message.type === "client ready") {
         self.$store.commit('playerReady', message.clientName);

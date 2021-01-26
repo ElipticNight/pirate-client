@@ -1,9 +1,9 @@
 <template>
   <div class="base-window">
-  <div class="ready-container">
-    <Player v-for="index in totalPlayers" :key="index"></Player>
+    <div class="ready-container">
+      <Player v-for="(status, name) in players" :key="name" :reference="name"></Player>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -12,8 +12,8 @@ import Player from "@/components/setup/Player.vue";
 export default {
   components: { Player },
   computed: {
-    totalPlayers() {
-      return this.$store.state.roomInformation.totalPlayers;
+    players() {
+      return this.$store.state.roomInformation.players;
     }
   }
 }
