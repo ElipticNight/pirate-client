@@ -56,9 +56,12 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
-        // setSettingsAndInitialRoomInformation(state, payload) {
-        //     //
-        // },
+        setSettingsAndInitialRoomInformation(state, message) {
+            state.roomInformation.totalPlayers = message.totalClients;
+            for(const client in message.clients) {
+                Vue.set(state.roomInformation.players, client, message.clients[client]);
+            }
+        },
         setDefaultBasePointsActions(state, size) {
             if(size === 7) {
                 state.setup.basePointsActions[200] = 25;
