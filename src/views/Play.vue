@@ -65,6 +65,10 @@ export default {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
       } else if(message.type === "client joined") {
         self.$store.commit('addNewPlayer', message.clientName);
+      } else if(message.type === "host request") {
+        if(message.success === true) {
+          self.$store.commit('setHost');
+        }
       } else if(message.type === "client left") {
         self.$store.commit('removePlayer', message.clientName);
       } else if(message.type === "client ready") {
@@ -80,7 +84,13 @@ export default {
         'roomid': room,
         'name': name
       }));
+      socket.send(JSON.stringify({
+        'type': 'request host',
+        'roomid': room,
+        'name': name
+      }));
     }
+    this.$store.commit('default');
     this.$store.commit('setDefaultBasePointsActions', 7);
     this.$store.commit('setAvailablePointsActionsToBase');
     this.$store.commit('clearGameGridValues');

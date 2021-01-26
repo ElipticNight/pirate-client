@@ -57,6 +57,9 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        default(state) {
+            state.roomInformation.gameState = "setup";
+        },
         setSettingsAndInitialRoomInformation(state, message) {
             state.roomInformation.totalPlayers = message.totalClients;
             for(const client in message.clients) {
@@ -159,6 +162,9 @@ export const store = new Vuex.Store({
         },
         playerUnready(state, name) {
             state.roomInformation.players[name] = "unready";
+        },
+        setHost(state) {
+            state.settings.isHost = true;
         }
     }
 })
