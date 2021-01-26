@@ -56,6 +56,9 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        // setSettingsAndInitialRoomInformation(state, payload) {
+        //     //
+        // },
         setDefaultBasePointsActions(state, size) {
             if(size === 7) {
                 state.setup.basePointsActions[200] = 25;

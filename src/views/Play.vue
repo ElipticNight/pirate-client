@@ -51,18 +51,31 @@ export default {
     const socket = this.$store.state.play.socket;
     const room = this.$route.params.room;
     const name = this.$route.params.name;
+    const self = this;
 
     socket.addEventListener('open', function () {
       console.log('connected to ws server');
     })
 
     socket.addEventListener('message', function (event) {
-      console.log('message recieved from server:    ', event.data);
+      const message = JSON.parse(event.data);
+      console.log(message);
+
+      if(message.type === "setup") {
+        console.log('setup');
+        // self.$store.commit('addNewPlayer', message.clientName);
+      } if(message.type === "client joined") {
+        self.$store.commit('addNewPlayer', message.clientName);
+      } else if(message.type === "client ready") {
+        self.$store.commit('playerReady', message.clientName);
+      } else if(message.type === "client unready") {
+        self.$store.commit('playerUnready', message.clientName);
+      }
     })
 
     socket.onopen = function() {
       socket.send(JSON.stringify({
-        'target': 'joinroom',
+        'type': 'joinroom',
         'roomid': room,
         'name': name
       }));
@@ -92,7 +105,7 @@ export default {
       } else {
         const socket = this.$store.state.play.socket;
         socket.send(JSON.stringify({
-          'target': 'ready',
+          'type': 'ready',
           'roomid': this.$route.params.room,
           'name': this.$route.params.name
         }));
