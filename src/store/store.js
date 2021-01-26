@@ -5,6 +5,13 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        settings: {
+            isHost: false
+        },
+        roomInformation: {
+            totalPlayers: 0,
+            players: {}
+        },
         setup: {
             active: null,
             activeValue: null,
@@ -131,6 +138,20 @@ export const store = new Vuex.Store({
             state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
             state.setup.active = null;
             state.setup.activeValue = null;
+        },
+        addNewPlayer(state, name) {
+            state.roomInformation.totalPlayers ++;
+            Vue.set(state.roomInformation.players, name, "unready");
+        },
+        removePlayer(state, name) {
+            state.roomInformation.totalPlayers --;
+            Vue.delete(state.roomInformation.players, name);
+        },
+        playerReady(state, name) {
+            state.roomInformation.players[name] = "ready";
+        },
+        playerUnready(state, name) {
+            state.roomInformation.players[name] = "unready";
         }
     }
 })

@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: "/play/:room",
-    name: "Play",
+    name: "Playold",
     component: JoinGame
   },
   {
