@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
         },
         roomInformation: {
             totalPlayers: 0,
-            players: {}
+            players: {},
+            gameState: "setup"
         },
         setup: {
             active: null,

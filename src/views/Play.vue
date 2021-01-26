@@ -41,10 +41,10 @@ import ReadyList from "@/components/setup/ReadyList.vue";
 export default {
   components: { GameGrid, ActionSquaresList, PointSquaresList, ReadyList },
   name: "Play",
-  data: function() {
-    return {
-      gameState: "setup"
-    };
+  computed: {
+    gameState() {
+      return this.$store.state.roomInformation.gameState;
+    }
   },
   mounted() {
     this.$store.state.play.socket = new WebSocket("ws://localhost:3000");
@@ -110,7 +110,7 @@ export default {
           'roomid': this.$route.params.room,
           'name': this.$route.params.name
         }));
-        this.gameState = "ready";
+        this.$store.state.roomInformation.gameState = "ready";
       }
     }
   },
