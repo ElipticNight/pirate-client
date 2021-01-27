@@ -5,7 +5,7 @@
     </div>
     <div class="button-wrapper">
       <button @click="unready()" class="unready-button">Unready!</button>
-      <button @click="unready()" class="start-button" hidden>Start!</button>
+      <button v-if="isHost" @click="start()" class="start-button" :disabled="isDisabled" v-bind:class="{ disabled: isDisabled }">Start!</button>
     </div>
   </div>
 </template>
@@ -18,6 +18,12 @@ export default {
   computed: {
     players() {
       return this.$store.state.roomInformation.players;
+    },
+    isHost() {
+      return this.$store.state.settings.isHost;
+    },
+    isDisabled() {
+      return (!this.$store.state.roomInformation.allPlayersReady);
     }
   },
   methods: {
@@ -29,6 +35,14 @@ export default {
         'name': this.$route.params.name
       }));
       this.$store.state.roomInformation.gameState = "setup";
+    },
+    start() {
+      const socket = this.$store.state.play.socket;
+      socket.send(JSON.stringify({
+        'type': 'start',
+        'roomid': this.$route.params.room,
+        'name': this.$route.params.name
+      }));
     }
   }
 }
@@ -75,6 +89,13 @@ export default {
       border-radius: 20px;
       &:hover{
         box-shadow: 0px 0px 1px 1px rgb(2, 71, 2);
+      }
+    }
+    .disabled {
+      // border: solid 1px red;
+      background-color: rgb(59, 75, 59);
+        &:hover{
+        box-shadow: 0px 0px 1px 1px red;
       }
     }
   }
