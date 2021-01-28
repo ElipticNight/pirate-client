@@ -9,22 +9,10 @@
           <h3>settings:</h3>
         </div>
         <div class="content-body">
-          <label class="label-container">
-            <input type="checkbox" v-model="one"/>
-            One
-          </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="two"/>
-            Two
-          </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="three"/>
-            Three
-          </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="four"/>
-            Four
-          </label>
+          <ToggleButton v-model="one"></ToggleButton>
+          <ToggleButton v-model="two"></ToggleButton>
+          <ToggleButton v-model="three"></ToggleButton>
+          <ToggleButton v-model="four"></ToggleButton>
         </div>
       </div>
       <div class="base-submit">
