@@ -30,10 +30,16 @@ const routes = [
     component: Instructions
   },
   {
-    path: "/play/:channel",
+    path: "/play/:room",
+    name: "Playold",
+    component: JoinGame
+  },
+  {
+    path: "/play/:room/:name",
     name: "Play",
     component: Play
-  }
+  },
+  
 ];
 
 const router = new VueRouter({

@@ -31,7 +31,9 @@ export default {
 				if(this.squareValue === this.activeValue) {
 					this.$store.commit('storeGameGridValue', [this.reference, null]);
 				} else {
+					if(this.activeValue !== null) {
 					this.$store.commit('decrementAvailablePointsActions', this.activeValue);
+					}
 					this.$store.commit('storeGameGridValue', [this.reference, this.activeValue]);
 				}
 			} else {

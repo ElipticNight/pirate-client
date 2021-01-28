@@ -5,6 +5,15 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        settings: {
+            isHost: false
+        },
+        roomInformation: {
+            totalPlayers: 0,
+            players: {},
+            gameState: "setup",
+            allPlayersReady: false
+        },
         setup: {
             active: null,
             activeValue: null,
@@ -24,6 +33,7 @@ export const store = new Vuex.Store({
                 "Double": null,
                 "Bank": null
             },
+            totalBasePointsActions: 0,
             availablePointsActions: {
                 200: 0,
                 1000: 0,
@@ -39,7 +49,8 @@ export const store = new Vuex.Store({
                 "Bomb": 0,
                 "Double": 0,
                 "Bank": 0
-            }
+            },
+            totalAvailablePointsActions: 0
         },
         play: {
             gameGridValues: new Array(50).fill(null),
@@ -47,6 +58,15 @@ export const store = new Vuex.Store({
         },
     },
     mutations: {
+        default(state) {
+            state.roomInformation.gameState = "setup";
+        },
+        setSettingsAndInitialRoomInformation(state, message) {
+            state.roomInformation.totalPlayers = message.totalClients;
+            for(const client in message.clients) {
+                Vue.set(state.roomInformation.players, client, message.clients[client]);
+            }
+        },
         setDefaultBasePointsActions(state, size) {
             if(size === 7) {
                 state.setup.basePointsActions[200] = 25;
@@ -63,6 +83,7 @@ export const store = new Vuex.Store({
                 state.setup.basePointsActions["Bomb"] = 1;
                 state.setup.basePointsActions["Double"] = 1;
                 state.setup.basePointsActions["Bank"] = 1;
+                state.setup.totalBasePointsActions = 7**2;
             }
         },
         setCustomBasePointsActions() {
@@ -70,6 +91,7 @@ export const store = new Vuex.Store({
         },
         setAvailablePointsActionsToBase(state) {
             Object.assign(state.setup.availablePointsActions, state.setup.basePointsActions);
+            state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
         },
         setActive(state, value) {
             state.setup.active = value;
@@ -79,9 +101,11 @@ export const store = new Vuex.Store({
         },
         incrementAvailablePointsActions(state, value) {
             state.setup.availablePointsActions[value] ++;
+            state.setup.totalAvailablePointsActions ++;
         },
         decrementAvailablePointsActions(state, value) {
             state.setup.availablePointsActions[value] --;
+            state.setup.totalAvailablePointsActions --;
         },
         storeGameGridValue(state, payload) {
             Vue.set(state.play.gameGridValues, payload[0] - 1, payload[1]);
@@ -114,11 +138,43 @@ export const store = new Vuex.Store({
                 
                 i++;
             }
+            state.setup.totalAvailablePointsActions = 0;
+            state.setup.active = null;
+            state.setup.activeValue = null;
         },
         clearGameGridValues(state) {
             for (var i = 0; i < state.play.gameGridValues.length; i++) {
                 Vue.set(state.play.gameGridValues, i, null);
             }
+            state.setup.totalAvailablePointsActions = state.setup.totalBasePointsActions;
+            state.setup.active = null;
+            state.setup.activeValue = null;
+        },
+        addNewPlayer(state, name) {
+            state.roomInformation.totalPlayers ++;
+            Vue.set(state.roomInformation.players, name, "unready");
+        },
+        removePlayer(state, name) {
+            state.roomInformation.totalPlayers --;
+            Vue.delete(state.roomInformation.players, name);
+        },
+        playerReady(state, name) {
+            state.roomInformation.players[name] = "ready";
+        },
+        playerUnready(state, name) {
+            state.roomInformation.players[name] = "unready";
+        },
+        setHost(state) {
+            state.settings.isHost = true;
+        },
+        readyToStartGame(state) {
+            state.roomInformation.allPlayersReady = true;
+        },
+        notReadyToStartGame(state) {
+            state.roomInformation.allPlayersReady = false;
+        },
+        changeGameState(state, newGameState) {
+            state.roomInformation.gameState = newGameState;
         }
     }
 })
