@@ -172,6 +172,9 @@ export const store = new Vuex.Store({
         },
         notReadyToStartGame(state) {
             state.roomInformation.allPlayersReady = false;
+        },
+        changeGameState(state, newGameState) {
+            state.roomInformation.gameState = newGameState;
         }
     }
 })

@@ -34,7 +34,7 @@ export default {
         'roomid': this.$route.params.room,
         'name': this.$route.params.name
       }));
-      this.$store.state.roomInformation.gameState = "setup";
+      this.$store.commit('changeGameState', 'setup');
     },
     start() {
       const socket = this.$store.state.play.socket;

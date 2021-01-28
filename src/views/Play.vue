@@ -79,6 +79,8 @@ export default {
         self.$store.commit('notReadyToStartGame');
       } else if(message.type === "all clients ready") {
         self.$store.commit('readyToStartGame');
+      } else if(message.type === "start game") {
+        self.$store.commit('changeGameState', 'play');
       }
     })
 
@@ -100,9 +102,6 @@ export default {
     this.$store.commit('clearGameGridValues');
   },
   methods: {
-    sendMessage: function() {
-      //
-    },
     randomise: function() {
       this.clear();
       this.randomiseRemaining();
@@ -124,7 +123,7 @@ export default {
           'roomid': this.$route.params.room,
           'name': this.$route.params.name
         }));
-        this.$store.state.roomInformation.gameState = "ready";
+        this.$store.commit('changeGameState', 'ready');
       }
     }
   },
