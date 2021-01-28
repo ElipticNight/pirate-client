@@ -9,10 +9,22 @@
           <h3>settings:</h3>
         </div>
         <div class="content-body">
-          <ToggleButton v-model="one"></ToggleButton>
-          <ToggleButton v-model="two"></ToggleButton>
-          <ToggleButton v-model="three"></ToggleButton>
-          <ToggleButton v-model="four"></ToggleButton>
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="one" />
+            Force Random
+          </label>
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="two" />
+            Disable Pause
+          </label>
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="three" />
+            Disable Avatars
+          </label>
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="four" />
+            Disable Chat
+          </label>
         </div>
       </div>
       <div class="base-submit">
@@ -63,16 +75,18 @@ export default {
 }
 .content-body {
   flex: 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  margin: 5vh 5vh;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  justify-content: left;
+  align-items: center;
   text-align: left;
   .label-container {
     color: darkblue;
-    padding: 10px 20px;
-    border-radius: 20px;
-    &:hover {
-      background-color: #2a4a6d;
+    font-size: 2vh;
+    user-select: none;
+    .toggle {
+      padding-right: 2vh;
     }
   }
 }
