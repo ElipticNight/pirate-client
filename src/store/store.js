@@ -166,6 +166,12 @@ export const store = new Vuex.Store({
         },
         setHost(state) {
             state.settings.isHost = true;
+        },
+        readyToStartGame(state) {
+            state.roomInformation.allPlayersReady = true;
+        },
+        notReadyToStartGame(state) {
+            state.roomInformation.allPlayersReady = false;
         }
     }
 })

@@ -65,6 +65,7 @@ export default {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
       } else if(message.type === "client joined") {
         self.$store.commit('addNewPlayer', message.clientName);
+        self.$store.commit('notReadyToStartGame');
       } else if(message.type === "host request") {
         if(message.success === true) {
           self.$store.commit('setHost');
@@ -75,6 +76,9 @@ export default {
         self.$store.commit('playerReady', message.clientName);
       } else if(message.type === "client unready") {
         self.$store.commit('playerUnready', message.clientName);
+        self.$store.commit('notReadyToStartGame');
+      } else if(message.type === "all clients ready") {
+        self.$store.commit('readyToStartGame');
       }
     })
 
