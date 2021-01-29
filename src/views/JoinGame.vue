@@ -9,7 +9,7 @@
         <input
           class="game-id-button"
           type="text"
-          v-model="roomID"
+          v-model="avatar"
           placeholder="Avatar"
         />
         <input
@@ -26,21 +26,19 @@
         />
       </div>
       <div class="base-submit">
-        <RouteButton button-text="Join Game" :route-target="target">
-        </RouteButton>
+        <button class="join-button" @click="join()">Join Game</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import RouteButton from "@/components/RouteButton.vue";
 
 export default {
-  components: { RouteButton },
   name: "JoinGame",
 
   data: function() {
     return {
+      avatar: "",
       roomID: "",
       name: ""
     };
@@ -52,7 +50,13 @@ export default {
   },
   mounted() {
     this.roomID = this.$store.state.roomInformation.roomID;
+  },
+  methods: {
+  join() {
+    this.$store.commit('setAvatar', this.avatar);
+    this.$router.push("/" + this.target);
   }
+}
 };
 </script>
 
@@ -84,5 +88,12 @@ export default {
       box-shadow: 0px 0px 1px 1px blue;
     }
   }
+}
+.join-button {
+  height: 75px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  border-radius: 20px;
 }
 </style>

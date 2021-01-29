@@ -10,6 +10,7 @@ export const store = new Vuex.Store({
         },
         roomInformation: {
             roomID: '',
+            avatar: '',
             totalPlayers: 0,
             players: {},
             gameState: "setup",
@@ -64,6 +65,9 @@ export const store = new Vuex.Store({
         },
         setCreatorRoomID(state, roomID) {
             state.roomInformation.roomID = roomID;
+        },
+        setAvatar(state, avatar) {
+            state.roomInformation.avatar = avatar;
         },
         setSettingsAndInitialRoomInformation(state, message) {
             state.roomInformation.totalPlayers = message.totalClients;
