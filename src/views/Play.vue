@@ -5,7 +5,7 @@
         <ActionSquaresList></ActionSquaresList>
       </div>
       <div class="centre">
-        <GameGrid></GameGrid>
+        <BaseGrid gameState="setup"></BaseGrid>
       </div>
       <div class="right-sidebar">
         <PointSquaresList></PointSquaresList>
@@ -25,7 +25,7 @@
       <ReadyList></ReadyList>
     </div>
     <div v-if="gameState === 'play'" class="play">
-      <PlayGrid></PlayGrid>
+      <BaseGrid gameState="play"></BaseGrid>
     </div>
     <div v-if="gameState === 'end'" class="end">
       <h1>Game Over!</h1>
@@ -33,14 +33,13 @@
   </div>
 </template>
 <script>
-import GameGrid from "@/components/GameGrid.vue";
-import PlayGrid from "@/components/play/Grid.vue";
+import BaseGrid from "@/components/BaseGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
 import ReadyList from "@/components/setup/ReadyList.vue";
 
 export default {
-  components: { GameGrid, PlayGrid, ActionSquaresList, PointSquaresList, ReadyList },
+  components: { BaseGrid, ActionSquaresList, PointSquaresList, ReadyList },
   name: "Play",
   computed: {
     gameState() {
