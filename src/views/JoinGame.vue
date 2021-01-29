@@ -40,7 +40,7 @@ export default {
     return {
       avatar: "",
       roomID: "",
-      name: "example"
+      name: Math.floor(Math.random() * (16777215 - 1048576) + 1048576).toString(16).toUpperCase()
     };
   },
   computed: {
