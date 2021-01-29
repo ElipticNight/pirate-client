@@ -36,10 +36,10 @@ export default {
 
 <style lang="scss" scoped>
 .grid-container {
-    width: 70vh;
-    height: 70vh;
-    display: grid;
-    grid-template-rows: repeat(var(--grid-dimensions), 1fr);
-		grid-template-columns: repeat(var(--grid-dimensions), 1fr);
+  width: 70vh;
+  height: 70vh;
+  display: grid;
+  grid-template-rows: repeat(var(--grid-dimensions), 1fr);
+  grid-template-columns: repeat(var(--grid-dimensions), 1fr);
 }
 </style>

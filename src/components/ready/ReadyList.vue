@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Player from "@/components/setup/Player.vue";
+import Player from "@/components/ready/Player.vue";
 
 export default {
   components: { Player },

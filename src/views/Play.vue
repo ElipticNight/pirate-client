@@ -36,7 +36,7 @@
 import BaseGrid from "@/components/BaseGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
-import ReadyList from "@/components/setup/ReadyList.vue";
+import ReadyList from "@/components/ready/ReadyList.vue";
 
 export default {
   components: { BaseGrid, ActionSquaresList, PointSquaresList, ReadyList },
