@@ -23,15 +23,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20vh;
-  width: 15vh;
+  height: 90%;
+  width: 70%;
   background-color: brown;
   border-radius: 15px;
   .player-main {
     display: grid;
     grid-template-rows: 17fr 3fr;
-    height: 18vh;
-    width: 13vh;
+    height: 85%;
+    width: 80%;
     .image {
       background-color: lightblue;
     }

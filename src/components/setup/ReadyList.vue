@@ -1,6 +1,6 @@
 <template>
   <div class="ready-container">
-    <div class="player-list">
+    <div class="player-list" :style="cssVars">
       <Player v-for="(status, name) in players" :key="name" :reference="name"></Player>
     </div>
     <div class="button-wrapper">
@@ -24,6 +24,25 @@ export default {
     },
     isDisabled() {
       return (!this.$store.state.roomInformation.allPlayersReady);
+    },
+    cssVars() {
+      let totalPlayers = this.$store.state.roomInformation.totalPlayers;
+      let rows = 0;
+      let columns = 0;
+      if(totalPlayers <= 12) {
+        rows = 2;
+        columns = 6;
+      } else if(totalPlayers <= 30) {
+        rows = 3;
+        columns = 10;
+      } else{
+        rows = 4;
+        columns = 13;
+      }
+      return {
+        '--grid-rows': rows,
+        '--grid-columns': columns
+      }
     }
   },
   methods: {
@@ -58,9 +77,10 @@ export default {
   border-radius: 50px;
   border: solid 2px blue;
   .player-list{
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);;
     row-gap: 3vh;
     justify-items: center;
     align-items: center;
@@ -68,6 +88,7 @@ export default {
   .button-wrapper {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     .unready-button {
       height: 7vh;
       width: 70vh;
