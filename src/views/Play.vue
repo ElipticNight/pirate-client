@@ -25,7 +25,7 @@
       <ReadyList></ReadyList>
     </div>
     <div v-if="gameState === 'play'" class="play">
-      <GameGrid></GameGrid>
+      <PlayGrid></PlayGrid>
     </div>
     <div v-if="gameState === 'end'" class="end">
       <h1>Game Over!</h1>
@@ -34,12 +34,13 @@
 </template>
 <script>
 import GameGrid from "@/components/GameGrid.vue";
+import PlayGrid from "@/components/play/Grid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
 import ReadyList from "@/components/setup/ReadyList.vue";
 
 export default {
-  components: { GameGrid, ActionSquaresList, PointSquaresList, ReadyList },
+  components: { GameGrid, PlayGrid, ActionSquaresList, PointSquaresList, ReadyList },
   name: "Play",
   computed: {
     gameState() {
@@ -91,11 +92,6 @@ export default {
     socket.onopen = function() {
       socket.send(JSON.stringify({
         'type': 'joinroom',
-        'roomid': room,
-        'name': name
-      }));
-      socket.send(JSON.stringify({
-        'type': 'request host',
         'roomid': room,
         'name': name
       }));

@@ -1,16 +1,16 @@
 <template>
 	<div>
 		<div class="grid-container" :style="cssVars">
-			<GameGridSquare v-for="i in squareNos" :key="i" :reference="i" ref="gridSquare"></GameGridSquare>
+			<GridSquare v-for="i in squareNos" :key="i" :reference="i" ref="gridSquare"></GridSquare>
 		</div>
   </div>
 </template>
 
 <script>
-import GameGridSquare from "@/components/GameGridSquare.vue";
+import GridSquare from "@/components/play/GridSquare.vue";
 
 export default {
-	components: { GameGridSquare },
+	components: { GridSquare },
 	data: function() {
 		return {
 			gridSize: 7
