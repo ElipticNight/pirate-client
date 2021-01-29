@@ -61,7 +61,9 @@ export default {
       const message = JSON.parse(event.data);
       console.log(message);
 
-      if(message.type === "setup") {
+      if (message.type === "username taken") {
+        self.$router.push("/join");
+      } else if(message.type === "setup") {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
       } else if(message.type === "client joined") {
         self.$store.commit('addNewPlayer', message.clientName);

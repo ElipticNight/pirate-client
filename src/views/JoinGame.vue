@@ -40,7 +40,7 @@ export default {
     return {
       avatar: "",
       roomID: "",
-      name: ""
+      name: "example"
     };
   },
   computed: {
