@@ -64,7 +64,8 @@ export default {
       );
     },
     play() {
-      this.$router.push("/play/" + this.room + '/name');
+      this.$store.commit('setCreatorRoomID', this.room);
+      this.$router.push("/join/");
     }
   }
 };

@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
             isHost: false
         },
         roomInformation: {
+            roomID: '',
             totalPlayers: 0,
             players: {},
             gameState: "setup",
@@ -60,6 +61,9 @@ export const store = new Vuex.Store({
     mutations: {
         default(state) {
             state.roomInformation.gameState = "setup";
+        },
+        setCreatorRoomID(state, roomID) {
+            state.roomInformation.roomID = roomID;
         },
         setSettingsAndInitialRoomInformation(state, message) {
             state.roomInformation.totalPlayers = message.totalClients;

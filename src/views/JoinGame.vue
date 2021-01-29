@@ -45,11 +45,13 @@ export default {
       name: ""
     };
   },
-
   computed: {
     target: function() {
       return "play/" + this.roomID + '/' + this.name;
     }
+  },
+  mounted() {
+    this.roomID = this.$store.state.roomInformation.roomID;
   }
 };
 </script>
