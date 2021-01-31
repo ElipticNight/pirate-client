@@ -17,10 +17,10 @@ export default {
   props: ["reference"],
   computed: {
     isReady() {
-      return (this.$store.state.roomInformation.players[this.reference] === "ready");
+      return (this.$store.state.roomInformation.players[this.reference][0] === "ready");
     },
     avatar: function() {
-      return "002-girl"
+      return this.$store.state.roomInformation.players[this.reference][1];
     }
   }
 }

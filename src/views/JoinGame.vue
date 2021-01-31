@@ -46,11 +46,8 @@ export default {
     };
   },
   computed: {
-    target: function() {
+    target() {
       return "play/" + this.roomID + '/' + this.name;
-    },
-    avatarSource: function() {
-      return "../assets/avatars/" +  this.avatar + ".svg"
     }
   },
   mounted() {

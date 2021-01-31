@@ -158,19 +158,19 @@ export const store = new Vuex.Store({
             state.setup.active = null;
             state.setup.activeValue = null;
         },
-        addNewPlayer(state, name) {
+        addNewPlayer(state, message) {
             state.roomInformation.totalPlayers ++;
-            Vue.set(state.roomInformation.players, name, "unready");
+            Vue.set(state.roomInformation.players, message.clientName, ["unready", message.clientAvatar]);
         },
         removePlayer(state, name) {
             state.roomInformation.totalPlayers --;
             Vue.delete(state.roomInformation.players, name);
         },
         playerReady(state, name) {
-            state.roomInformation.players[name] = "ready";
+            Vue.set(state.roomInformation.players[name], 0, "ready");
         },
         playerUnready(state, name) {
-            state.roomInformation.players[name] = "unready";
+            Vue.set(state.roomInformation.players[name], 0, "unready");
         },
         setHost(state) {
             state.settings.isHost = true;

@@ -51,6 +51,7 @@ export default {
     const socket = this.$store.state.play.socket;
     const room = this.$route.params.room;
     const name = this.$route.params.name;
+    const avatar = this.$store.state.roomInformation.avatar;
     const self = this;
 
     socket.addEventListener('open', function () {
@@ -68,7 +69,7 @@ export default {
       } else if(message.type === "setup") {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
       } else if(message.type === "client joined") {
-        self.$store.commit('addNewPlayer', message.clientName);
+        self.$store.commit('addNewPlayer', message);
         self.$store.commit('notReadyToStartGame');
       } else if(message.type === "host request") {
         if(message.success === true) {
@@ -92,7 +93,8 @@ export default {
       socket.send(JSON.stringify({
         'type': 'joinroom',
         'roomid': room,
-        'name': name
+        'name': name,
+        'avatar': avatar
       }));
     }
     this.$store.commit('default');
