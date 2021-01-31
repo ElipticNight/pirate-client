@@ -29,19 +29,24 @@ export default {
       let totalPlayers = this.$store.state.roomInformation.totalPlayers;
       let rows = 0;
       let columns = 0;
+      let rowHeight = "";
       if(totalPlayers <= 12) {
         rows = 2;
         columns = 6;
+        rowHeight = "30vh";
       } else if(totalPlayers <= 30) {
         rows = 3;
         columns = 10;
+        rowHeight = "19vh";
       } else{
         rows = 4;
         columns = 13;
+        rowHeight = "13vh";
       }
       return {
         '--grid-rows': rows,
-        '--grid-columns': columns
+        '--grid-columns': columns,
+        '--grid-rowHeight': rowHeight
       }
     }
   },
@@ -70,7 +75,7 @@ export default {
 <style lang="scss" scoped>
 .ready-container{
   display: grid;
-  grid-template-rows: 4fr 1fr;
+  grid-template-rows: 9fr 1fr;
   height: 75vh;
   width: 75vw;
   padding: 3vh;
@@ -79,9 +84,9 @@ export default {
   .player-list{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(var(--grid-columns), 1fr);;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);;
     row-gap: 3vh;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-template-rows: repeat(var(--grid-rows), var(--grid-rowHeight));
     justify-items: center;
     align-items: center;
   }
