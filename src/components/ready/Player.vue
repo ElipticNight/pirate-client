@@ -3,7 +3,9 @@
       <div class="main-wrapper">
         <div class="player-main">
           <div class="spacer"></div>
-          <div class="image"></div>
+          <div class="image">
+            <img :src="require('../../assets/avatars/' + avatar + '.svg')" />
+          </div>
           <div class="name">{{ reference }}</div>
         </div>
       </div>
@@ -16,6 +18,9 @@ export default {
   computed: {
     isReady() {
       return (this.$store.state.roomInformation.players[this.reference] === "ready");
+    },
+    avatar: function() {
+      return "002-girl"
     }
   }
 }

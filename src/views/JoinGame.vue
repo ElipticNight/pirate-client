@@ -5,7 +5,9 @@
         <h1>Join Game</h1>
       </div>
       <div class="content">
-        <div class="avatar"></div>
+        <div class="avatar">
+          <img :src="require('../assets/avatars/'+avatar+'.svg')" />
+        </div>
         <input
           class="game-id-button"
           type="text"
@@ -38,14 +40,17 @@ export default {
 
   data: function() {
     return {
-      avatar: "",
+      avatar: "001-boy",
       roomID: "",
-      name: Math.floor(Math.random() * (16777215 - 1048576) + 1048576).toString(16).toUpperCase()
+      name: Math.floor(Math.random() * (16777215 - 1048576) + 1048576).toString(16).toUpperCase(),
     };
   },
   computed: {
     target: function() {
       return "play/" + this.roomID + '/' + this.name;
+    },
+    avatarSource: function() {
+      return "../assets/avatars/" +  this.avatar + ".svg"
     }
   },
   mounted() {
