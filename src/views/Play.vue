@@ -86,6 +86,7 @@ export default {
         self.$store.commit('readyToStartGame');
       } else if(message.type === "start game") {
         self.$store.commit('changeGameState', 'play');
+        self.sendResponse('start game', 'started');
       }
     })
 
@@ -97,24 +98,25 @@ export default {
         'avatar': avatar
       }));
     }
+
     this.$store.commit('default');
     this.$store.commit('setDefaultBasePointsActions', 7);
     this.$store.commit('setAvailablePointsActionsToBase');
     this.$store.commit('clearGameGridValues');
   },
   methods: {
-    randomise: function() {
+    randomise() {
       this.clear();
       this.randomiseRemaining();
     },
-    randomiseRemaining: function() {
+    randomiseRemaining() {
       this.$store.commit('randomiseRemainingGameGridValues', null);
     },
-    clear: function() {
+    clear() {
       this.$store.commit('clearGameGridValues');
       this.$store.commit('setAvailablePointsActionsToBase');
     },
-    ready: function() {
+    ready() {
       if(this.$store.state.setup.totalAvailablePointsActions !== 0) {
         //
       } else {
@@ -126,6 +128,16 @@ export default {
         }));
         this.$store.commit('changeGameState', 'ready');
       }
+    },
+    sendResponse(original, response) {
+      const socket = this.$store.state.play.socket;
+      socket.send(JSON.stringify({
+        'type': 'response',
+        'original': original,
+        'roomid': this.$route.params.room,
+        'name': this.$route.params.name,
+        'response': response
+      }));
     }
   },
 };
