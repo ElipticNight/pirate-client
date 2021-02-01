@@ -9,6 +9,8 @@ export const store = new Vuex.Store({
             isHost: false
         },
         roomInformation: {
+            roomID: '',
+            avatar: '',
             totalPlayers: 0,
             players: {},
             gameState: "setup",
@@ -60,6 +62,12 @@ export const store = new Vuex.Store({
     mutations: {
         default(state) {
             state.roomInformation.gameState = "setup";
+        },
+        setCreatorRoomID(state, roomID) {
+            state.roomInformation.roomID = roomID;
+        },
+        setAvatar(state, avatar) {
+            state.roomInformation.avatar = avatar;
         },
         setSettingsAndInitialRoomInformation(state, message) {
             state.roomInformation.totalPlayers = message.totalClients;
@@ -150,19 +158,19 @@ export const store = new Vuex.Store({
             state.setup.active = null;
             state.setup.activeValue = null;
         },
-        addNewPlayer(state, name) {
+        addNewPlayer(state, message) {
             state.roomInformation.totalPlayers ++;
-            Vue.set(state.roomInformation.players, name, "unready");
+            Vue.set(state.roomInformation.players, message.clientName, ["unready", message.clientAvatar]);
         },
         removePlayer(state, name) {
             state.roomInformation.totalPlayers --;
             Vue.delete(state.roomInformation.players, name);
         },
         playerReady(state, name) {
-            state.roomInformation.players[name] = "ready";
+            Vue.set(state.roomInformation.players[name], 0, "ready");
         },
         playerUnready(state, name) {
-            state.roomInformation.players[name] = "unready";
+            Vue.set(state.roomInformation.players[name], 0, "unready");
         },
         setHost(state) {
             state.settings.isHost = true;

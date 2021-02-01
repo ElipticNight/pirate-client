@@ -1,6 +1,6 @@
 <template>
   <div class="ready-container">
-    <div class="player-list">
+    <div class="player-list" :style="cssVars">
       <Player v-for="(status, name) in players" :key="name" :reference="name"></Player>
     </div>
     <div class="button-wrapper">
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Player from "@/components/setup/Player.vue";
+import Player from "@/components/ready/Player.vue";
 
 export default {
   components: { Player },
@@ -24,6 +24,30 @@ export default {
     },
     isDisabled() {
       return (!this.$store.state.roomInformation.allPlayersReady);
+    },
+    cssVars() {
+      let totalPlayers = this.$store.state.roomInformation.totalPlayers;
+      let rows = 0;
+      let columns = 0;
+      let rowHeight = "";
+      if(totalPlayers <= 12) {
+        rows = 2;
+        columns = 6;
+        rowHeight = "30vh";
+      } else if(totalPlayers <= 30) {
+        rows = 3;
+        columns = 10;
+        rowHeight = "19vh";
+      } else{
+        rows = 4;
+        columns = 13;
+        rowHeight = "13vh";
+      }
+      return {
+        '--grid-rows': rows,
+        '--grid-columns': columns,
+        '--grid-rowHeight': rowHeight
+      }
     }
   },
   methods: {
@@ -51,23 +75,25 @@ export default {
 <style lang="scss" scoped>
 .ready-container{
   display: grid;
-  grid-template-rows: 4fr 1fr;
+  grid-template-rows: 9fr 1fr;
   height: 75vh;
   width: 75vw;
   padding: 3vh;
   border-radius: 50px;
   border: solid 2px blue;
   .player-list{
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     row-gap: 3vh;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-template-rows: repeat(var(--grid-rows), var(--grid-rowHeight));
     justify-items: center;
     align-items: center;
   }
   .button-wrapper {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     .unready-button {
       height: 7vh;
       width: 70vh;

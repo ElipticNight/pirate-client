@@ -5,7 +5,7 @@
         <ActionSquaresList></ActionSquaresList>
       </div>
       <div class="centre">
-        <GameGrid></GameGrid>
+        <BaseGrid gameState="setup"></BaseGrid>
       </div>
       <div class="right-sidebar">
         <PointSquaresList></PointSquaresList>
@@ -25,7 +25,7 @@
       <ReadyList></ReadyList>
     </div>
     <div v-if="gameState === 'play'" class="play">
-      <GameGrid></GameGrid>
+      <BaseGrid gameState="play"></BaseGrid>
     </div>
     <div v-if="gameState === 'end'" class="end">
       <h1>Game Over!</h1>
@@ -33,13 +33,13 @@
   </div>
 </template>
 <script>
-import GameGrid from "@/components/GameGrid.vue";
+import BaseGrid from "@/components/BaseGrid.vue";
 import ActionSquaresList from "@/components/setup/ActionSquaresList.vue";
 import PointSquaresList from "@/components/setup/PointSquaresList.vue";
-import ReadyList from "@/components/setup/ReadyList.vue";
+import ReadyList from "@/components/ready/ReadyList.vue";
 
 export default {
-  components: { GameGrid, ActionSquaresList, PointSquaresList, ReadyList },
+  components: { BaseGrid, ActionSquaresList, PointSquaresList, ReadyList },
   name: "Play",
   computed: {
     gameState() {
@@ -51,6 +51,7 @@ export default {
     const socket = this.$store.state.play.socket;
     const room = this.$route.params.room;
     const name = this.$route.params.name;
+    const avatar = this.$store.state.roomInformation.avatar;
     const self = this;
 
     socket.addEventListener('open', function () {
@@ -61,10 +62,14 @@ export default {
       const message = JSON.parse(event.data);
       console.log(message);
 
-      if(message.type === "setup") {
+      if (message.type === "username taken") {
+        self.$router.push("/join");
+      } else if(message.type === "room full") {
+        self.$router.push("/join");
+      } else if(message.type === "setup") {
         self.$store.commit('setSettingsAndInitialRoomInformation', message);
       } else if(message.type === "client joined") {
-        self.$store.commit('addNewPlayer', message.clientName);
+        self.$store.commit('addNewPlayer', message);
         self.$store.commit('notReadyToStartGame');
       } else if(message.type === "host request") {
         if(message.success === true) {
@@ -88,12 +93,8 @@ export default {
       socket.send(JSON.stringify({
         'type': 'joinroom',
         'roomid': room,
-        'name': name
-      }));
-      socket.send(JSON.stringify({
-        'type': 'request host',
-        'roomid': room,
-        'name': name
+        'name': name,
+        'avatar': avatar
       }));
     }
     this.$store.commit('default');

@@ -1,5 +1,5 @@
 <template>
-  <button class="home-button" @click="navigate()">{{ buttonText }}</button>
+  <button class="button" @click="navigate()">{{ buttonText }}</button>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home-button {
+.button {
   height: 75px;
   background-color: darkblue;
   color: white;

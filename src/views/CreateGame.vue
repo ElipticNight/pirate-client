@@ -10,20 +10,20 @@
         </div>
         <div class="content-body">
           <label class="label-container">
-            <input type="checkbox" v-model="one"/>
-            One
+            <ToggleButton class="toggle" v-model="one" />
+            Force Random
           </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="two"/>
-            Two
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="two" />
+            Disable Pause
           </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="three"/>
-            Three
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="three" />
+            Disable Avatars
           </label>
-            <label class="label-container">
-            <input type="checkbox" v-model="four"/>
-            Four
+          <label class="label-container">
+            <ToggleButton class="toggle" v-model="four" />
+            Disable Chat
           </label>
         </div>
       </div>
@@ -64,7 +64,8 @@ export default {
       );
     },
     play() {
-      this.$router.push("/play/" + this.room + '/name');
+      this.$store.commit('setCreatorRoomID', this.room);
+      this.$router.push("/join/");
     }
   }
 };
@@ -75,16 +76,18 @@ export default {
 }
 .content-body {
   flex: 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  margin: 5vh 5vh;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  justify-content: left;
+  align-items: center;
   text-align: left;
   .label-container {
     color: darkblue;
-    padding: 10px 20px;
-    border-radius: 20px;
-    &:hover {
-      background-color: #2a4a6d;
+    font-size: 2vh;
+    user-select: none;
+    .toggle {
+      padding-right: 2vh;
     }
   }
 }
